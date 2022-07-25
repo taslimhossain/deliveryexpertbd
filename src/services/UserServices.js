@@ -2,8 +2,7 @@ import requests from "./httpService";
 
 const UserServices = {
   getDashboard(body) {
-    return requests.get(`./dashboard`, body);
-    //return requests.get(`/userdashboard`, body);
+    return requests.get(`/admin/dashboard`, body);
   },
   getAllUsers(body) {
     return requests.get(`/user`, body);

@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 
 const HappyFilter = (data) => {
-
   const [dashboardData, setDashboardData] = useState({
     'today_order'      : 0,
     'month_order'      : 0,
@@ -12,10 +11,10 @@ const HappyFilter = (data) => {
   });
 
   const serviceData = useMemo(() => { 
-    setDashboardData(data);
-    }, [
-    data
-  ]);
+    if(data.status === 'success'){
+      setDashboardData(data.data);
+    }
+  }, [data]);
 
 
   return {

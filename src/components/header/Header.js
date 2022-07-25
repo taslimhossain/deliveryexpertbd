@@ -84,7 +84,7 @@ const Header = () => {
                     aria-hidden="true"
                   />
                 ) : (
-                  <span>{adminInfo.email[0].toUpperCase()}</span>
+                  <span>{adminInfo.user.name[0].toUpperCase()}</span>
                 )}
               </button>
               {profileOpen && (

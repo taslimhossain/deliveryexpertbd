@@ -4,7 +4,6 @@ import { ImStack, ImCreditCard } from 'react-icons/im';
 import { FiShoppingCart, FiTruck, FiRefreshCw, FiCheck } from 'react-icons/fi';
 
 import useAsync from '../hooks/useAsync';
-import useFilter from '../hooks/useFilter';
 import UserServices from '../services/UserServices';
 //import ChartCard from '../components/chart/ChartCard';
 import CardItem from '../components/dashboard/CardItem';
@@ -15,9 +14,7 @@ import HappyFilter from '../hooks/HappyFilter';
 
 const Dashboard = () => {
   const { data } = useAsync(UserServices.getDashboard);
-  const {
-    dashboardData
-  } = HappyFilter(data)
+  const { dashboardData } = HappyFilter(data);
 
   return (
     <>

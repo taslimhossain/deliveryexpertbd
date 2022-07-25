@@ -41,11 +41,47 @@ const sidebar = [
     icon: FiCompass,
     name: 'Orders',
   },
+
+  {
+    icon: FiSettings,
+    name: 'Pickup',
+    routes: [
+      {
+        path: '/orders',
+        icon: FiGift,
+        name: 'Orders',
+      },
+      {
+        path: '/category',
+        icon: FiGift,
+        name: 'Pickup',
+      }
+    ],
+  },
+
   {
     path: '/coupons',
     icon: FiGift,
     name: 'Coupons',
   },
+
+  {
+    icon: FiSettings,
+    name: 'products',
+    routes: [
+      {
+        path: '/products',
+        icon: FiGift,
+        name: 'Login',
+      },
+      {
+        path: '/category',
+        icon: FiGift,
+        name: 'Pickup',
+      }
+    ],
+  },
+
   {
     path: '/our-staff',
     icon: FiUser,
@@ -55,7 +91,8 @@ const sidebar = [
     path: '/setting',
     icon: FiSettings,
     name: 'Setting',
-  },
+  }
+
 ];
 
 export default sidebar;

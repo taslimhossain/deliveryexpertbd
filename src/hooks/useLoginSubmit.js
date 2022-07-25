@@ -16,7 +16,7 @@ const useLoginSubmit = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = ({ name, email, verifyEmail, password, role }) => {
+  const onSubmit = ({ name, login, verifyEmail, password, role }) => {
     setLoading(true);
 
     if (verifyEmail) {
@@ -30,7 +30,7 @@ const useLoginSubmit = () => {
           notifyError(err ? err.response.data.message : err.message);
         });
     } else if (name) {
-      AdminServices.registerAdmin({ name, email, password, role })
+      AdminServices.registerAdmin({ name, login, password, role })
         .then((res) => {
           if (res) {
             setLoading(false);
@@ -45,7 +45,7 @@ const useLoginSubmit = () => {
           setLoading(false);
         });
     } else {
-      AdminServices.loginAdmin({ email, password })
+      AdminServices.loginAdmin({ login, password })
         .then((res) => {
           if (res) {
             setLoading(false);
