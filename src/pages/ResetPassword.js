@@ -1,19 +1,24 @@
+import Cookies from 'js-cookie';
 import { Button, Input } from '@windmill/react-ui';
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-
+import { useHistory } from 'react-router-dom';
 import Error from '../components/form/Error';
 import LabelArea from '../components/form/LabelArea';
 import AdminServices from '../services/AdminServices';
 import { notifyError, notifySuccess } from '../utils/toast';
 import ImageLight from '../assets/img/forgot-password-office.jpeg';
 import ImageDark from '../assets/img/forgot-password-office-dark.jpeg';
+import { AdminContext } from '../context/AdminContext';
 
 const ResetPassword = () => {
   const { token } = useParams();
   const password = useRef('');
+  const { dispatch } = useContext(AdminContext);
   const [loading, setLoading] = useState(false);
+  const history = useHistory();
+  
   const {
     register,
     handleSubmit,
@@ -21,15 +26,18 @@ const ResetPassword = () => {
     formState: { errors },
   } = useForm();
 
-  password.current = watch('newPassword');
+  password.current = watch('password');
 
-  const submitHandler = ({ newPassword }) => {
+  const submitHandler = ({ password, password_confirmation }) => {
     setLoading(true);
 
-    AdminServices.resetPassword({ newPassword, token })
+    AdminServices.resetPassword({ password, password_confirmation, token })
       .then((res) => {
         setLoading(false);
         notifySuccess(res.message);
+        dispatch({ type: 'USER_LOGIN', payload: res });
+        Cookies.set('adminInfo', JSON.stringify(res));
+        history.replace('/');
       })
       .catch((err) => {
         setLoading(false);
@@ -65,34 +73,34 @@ const ResetPassword = () => {
                 <LabelArea label="Password" />
                 <Input
                   label="Password"
-                  name="newPassword"
+                  name="password"
                   type="password"
                   placeholder="Password"
-                  {...register('newPassword', {
+                  {...register('password', {
                     required: 'You must specify a password',
                     minLength: {
-                      value: 10,
-                      message: 'Password must have at least 10 characters',
+                      value: 6,
+                      message: 'Password must have at least 6 characters',
                     },
                   })}
                   className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
                 />
-                <Error errorName={errors.newPassword} />
+                <Error errorName={errors.password} />
                 <div className="mt-6"></div>
                 <LabelArea label="Confirm Password" />
                 <Input
                   label="Confirm Password"
-                  name="confirm_password"
+                  name="password_confirmation"
                   type="password"
                   placeholder="Confirm Password"
-                  {...register('confirm_password', {
+                  {...register('password_confirmation', {
                     validate: (value) =>
                       value === password.current ||
                       'The passwords do not match',
                   })}
                   className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
                 />
-                <Error errorName={errors.confirm_password} />
+                <Error errorName={errors.password_confirmation} />
 
                 <Button
                   disabled={loading}

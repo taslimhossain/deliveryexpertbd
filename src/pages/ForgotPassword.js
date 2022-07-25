@@ -38,15 +38,15 @@ const ForgotPassword = () => {
               </h1>
 
               <form onSubmit={handleSubmit(onSubmit)}>
-                <LabelArea label="Email" />
+              <LabelArea label="Email or Mobile number" />
                 <InputArea
                   register={register}
                   label="Email"
-                  name="verifyEmail"
-                  type="email"
-                  placeholder="john@doe.com"
+                  name="verifyLogin"
+                  type="text"
+                  placeholder="john@doe.com/0167000000"
                 />
-                <Error errorName={errors.verifyEmail} />
+                <Error errorName={errors.login} />
 
                 <Button
                   disabled={loading}

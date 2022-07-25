@@ -16,11 +16,11 @@ const useLoginSubmit = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = ({ name, login, verifyEmail, password, role }) => {
+  const onSubmit = ({ name, email, password_confirmation, login, mobile_no, verifyLogin, password }) => {
     setLoading(true);
 
-    if (verifyEmail) {
-      AdminServices.forgetPassword({ verifyEmail })
+    if (verifyLogin) {
+      AdminServices.forgetPassword({ verifyLogin })
         .then((res) => {
           setLoading(false);
           notifySuccess(res.message);
@@ -30,7 +30,7 @@ const useLoginSubmit = () => {
           notifyError(err ? err.response.data.message : err.message);
         });
     } else if (name) {
-      AdminServices.registerAdmin({ name, login, password, role })
+      AdminServices.registerAdmin({ name, mobile_no, email, password, password_confirmation })
         .then((res) => {
           if (res) {
             setLoading(false);

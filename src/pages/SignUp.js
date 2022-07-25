@@ -48,6 +48,17 @@ const SignUp = () => {
                   placeholder="Admin"
                 />
                 <Error errorName={errors.name} />
+                
+                <LabelArea label="Mobile Number" />
+                <InputArea
+                  register={register}
+                  label="Mobile Number"
+                  name="mobile_no"
+                  type="text"
+                  placeholder="01670 00 00 00"
+                />
+                <Error errorName={errors.mobile_no} />
+
                 <LabelArea label="Email" />
                 <InputArea
                   register={register}
@@ -67,12 +78,16 @@ const SignUp = () => {
                   placeholder="***************"
                 />
                 <Error errorName={errors.password} />
-
-                <LabelArea label="Staff Role" />
-                <div className="col-span-8 sm:col-span-4">
-                  <SelectRole register={register} label="Role" name="role" />
-                  <Error errorName={errors.role} />
-                </div>
+                
+                <LabelArea label="Password Confirmation" />
+                <InputArea
+                  register={register}
+                  label="Password Confirmation"
+                  name="password_confirmation"
+                  type="password"
+                  placeholder="***************"
+                />
+                <Error errorName={errors.password_confirmation} />
 
                 <Label className="mt-6" check>
                   <Input type="checkbox" />
@@ -94,22 +109,6 @@ const SignUp = () => {
               </form>
 
               <hr className="my-10" />
-
-              <button
-                disabled
-                className="text-sm inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center rounded-md focus:outline-none text-gray-700 bg-gray-100 shadow-sm my-2 md:px-2 lg:px-3 py-4 md:py-3.5 lg:py-4 hover:text-white hover:bg-blue-600 h-11 md:h-12 w-full mr-2"
-              >
-                <ImFacebook className="w-4 h-4 mr-2" />{' '}
-                <span className="ml-2">Login With Facebook</span>
-              </button>
-              <button
-                disabled
-                className="text-sm inline-flex items-center cursor-pointer transition ease-in-out duration-300 font-semibold font-serif text-center justify-center rounded-md focus:outline-none text-gray-700 bg-gray-100 shadow-sm my-2  md:px-2 lg:px-3 py-4 md:py-3.5 lg:py-4 hover:text-white hover:bg-red-500 h-11 md:h-12 w-full"
-              >
-                <ImGoogle className="w-4 h-4 mr-2" />{' '}
-                <span className="ml-2">Login With Google</span>
-              </button>
-
               <p className="mt-4">
                 <Link
                   className="text-sm font-medium text-green-500 dark:text-green-400 hover:underline"

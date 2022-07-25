@@ -2,6 +2,7 @@ import requests from './httpService';
 
 const AdminServices = {
   registerAdmin(body) {
+    console.log('body', body);
     return requests.post('/admin/register', body);
   },
 
@@ -10,11 +11,11 @@ const AdminServices = {
   },
 
   forgetPassword(body) {
-    return requests.put('/admin/forget-password', body);
+    return requests.put('/auth/recover', body);
   },
 
   resetPassword(body) {
-    return requests.put('/admin/reset-password', body);
+    return requests.put('/auth/reset', body);
   },
 
   signUpWithProvider(body) {
