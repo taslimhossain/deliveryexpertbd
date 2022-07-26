@@ -5,8 +5,8 @@ const Dashboard = lazy(() => import('../pages/Dashboard'));
 const Products = lazy(() => import('../pages/Products'));
 const ProductDetails = lazy(() => import('../pages/ProductDetails'));
 const Category = lazy(() => import('../pages/Category'));
-const Staff = lazy(() => import('../pages/Staff'));
-const Customers = lazy(() => import('../pages/Customers'));
+const Rider = lazy(() => import('../pages/Rider'));
+const Merchants = lazy(() => import('../pages/Merchants'));
 const CustomerOrder = lazy(() => import('../pages/CustomerOrder'));
 const Orders = lazy(() => import('../pages/Orders'));
 const OrderInvoice = lazy(() => import('../pages/OrderInvoice'));
@@ -44,16 +44,16 @@ const routes = [
     component: Category,
   },
   {
-    path: '/customers',
-    component: Customers,
+    path: '/merchants',
+    component: Merchants,
   },
   {
     path: '/customer-order/:id',
     component: CustomerOrder,
   },
   {
-    path: '/our-staff',
-    component: Staff,
+    path: '/our-rider',
+    component: Rider,
   },
   {
     path: '/orders',

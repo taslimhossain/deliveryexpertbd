@@ -32,11 +32,6 @@ const sidebar = [
     name: 'Category',
   },
   {
-    path: '/customers',
-    icon: FiUsers,
-    name: 'Customers',
-  },
-  {
     path: '/orders',
     icon: FiCompass,
     name: 'Orders',
@@ -81,11 +76,15 @@ const sidebar = [
       }
     ],
   },
-
   {
-    path: '/our-staff',
+    path: '/merchants',
+    icon: FiUsers,
+    name: 'Merchants',
+  },
+  {
+    path: '/our-rider',
     icon: FiUser,
-    name: 'Our Staff',
+    name: 'Our Rider',
   },
   {
     path: '/setting',

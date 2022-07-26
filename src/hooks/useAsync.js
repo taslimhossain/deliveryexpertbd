@@ -15,7 +15,9 @@ const useAsync = (asyncFunction) => {
     asyncFunction({ cancelToken: source.token })
       .then((res) => {
         if (!unmounted) {
-          setData(res);
+          if( res.status === 'success' ){
+            setData(res.data);
+          }
           setError('');
           setLoading(false);
         }

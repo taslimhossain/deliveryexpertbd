@@ -26,13 +26,13 @@ import PageTitle from '../components/Typography/PageTitle';
 import MainDrawer from '../components/drawer/MainDrawer';
 import StaffDrawer from '../components/drawer/StaffDrawer';
 
-const Staff = () => {
+const Rider = () => {
   const { state } = useContext(AdminContext);
   const { adminInfo } = state;
   const { toggleDrawer } = useContext(SidebarContext);
 
   const { data, loading } = useAsync(() =>
-    AdminServices.getAllStaff({ email: adminInfo.email })
+    AdminServices.getAllRider({ email: adminInfo.email })
   );
 
   const {
@@ -48,7 +48,7 @@ const Staff = () => {
 
   return (
     <>
-      <PageTitle>All Staff</PageTitle>
+      <PageTitle>All Rider</PageTitle>
       <MainDrawer>
         <StaffDrawer />
       </MainDrawer>
@@ -95,7 +95,7 @@ const Staff = () => {
                 <span className="mr-3">
                   <FiPlus />
                 </span>
-                Add Staff
+                Add Rider
               </Button>
             </div>
           </form>
@@ -137,4 +137,4 @@ const Staff = () => {
   );
 };
 
-export default Staff;
+export default Rider;

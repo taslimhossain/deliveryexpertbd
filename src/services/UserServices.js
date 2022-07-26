@@ -4,8 +4,8 @@ const UserServices = {
   getDashboard(body) {
     return requests.get(`/admin/dashboard`, body);
   },
-  getAllUsers(body) {
-    return requests.get(`/user`, body);
+  getAllMerchants(body) {
+    return requests.get(`/admin/merchants/getallmerchants`, body);
   },
   getUserById(id) {
     return requests.get(`/user/${id}`);

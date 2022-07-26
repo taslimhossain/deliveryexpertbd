@@ -19,8 +19,8 @@ import Loading from '../components/preloader/Loading';
 import PageTitle from '../components/Typography/PageTitle';
 import CustomerTable from '../components/customer/CustomerTable';
 
-const Customers = () => {
-  const { data, loading } = useAsync(UserServices.getAllUsers);
+const Merchants = () => {
+  const { data, loading } = useAsync(UserServices.getAllMerchants);
 
   const {
     userRef,
@@ -34,7 +34,7 @@ const Customers = () => {
 
   return (
     <>
-      <PageTitle>Customers</PageTitle>
+      <PageTitle>Merchants</PageTitle>
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
           <form
@@ -91,4 +91,4 @@ const Customers = () => {
   );
 };
 
-export default Customers;
+export default Merchants;

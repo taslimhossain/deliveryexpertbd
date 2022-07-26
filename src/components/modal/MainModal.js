@@ -35,7 +35,7 @@ const MainModal = ({ id }) => {
         .catch((err) => notifyError(err.message));
       closeModal();
     }
-    if (location.pathname === '/customers') {
+    if (location.pathname === '/merchants') {
       UserServices.deleteUser(id)
         .then((res) => {
           setIsUpdate(true);
@@ -54,7 +54,7 @@ const MainModal = ({ id }) => {
         .catch((err) => notifyError(err.message));
       closeModal();
     }
-    if (location.pathname === '/our-staff') {
+    if (location.pathname === '/our-rider') {
       AdminServices.deleteStaff(id)
         .then((res) => {
           setIsUpdate(true);

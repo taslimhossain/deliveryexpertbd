@@ -25,8 +25,8 @@ const AdminServices = {
   addStaff(body) {
     return requests.post('/admin/add', body);
   },
-  getAllStaff(body) {
-    return requests.post('/admin', body);
+  getAllRider(body) {
+    return requests.post('/admin/rider/getallrider', body);
   },
   getStaffById(id, body) {
     return requests.post(`/admin/${id}`, body);
