@@ -62,17 +62,22 @@ const sidebar = [
 
   {
     icon: FiSettings,
-    name: 'products',
+    name: 'Courier Settings',
     routes: [
       {
-        path: '/products',
+        path: '/districts',
         icon: FiGift,
-        name: 'Login',
+        name: 'Districts',
       },
       {
-        path: '/category',
+        path: '/areas',
         icon: FiGift,
-        name: 'Pickup',
+        name: 'Areas',
+      },
+      {
+        path: '/zones',
+        icon: FiGift,
+        name: 'Zones',
       }
     ],
   },

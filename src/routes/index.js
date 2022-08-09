@@ -11,6 +11,7 @@ const CustomerOrder = lazy(() => import('../pages/CustomerOrder'));
 const Orders = lazy(() => import('../pages/Orders'));
 const OrderInvoice = lazy(() => import('../pages/OrderInvoice'));
 const Coupons = lazy(() => import('../pages/Coupons'));
+const Districts = lazy(() => import('../pages/Districts'));
 // const Setting = lazy(() => import("../pages/Setting"));
 const Page404 = lazy(() => import('../pages/404'));
 const EditProfile = lazy(() => import('../pages/EditProfile'));
@@ -66,6 +67,10 @@ const routes = [
   {
     path: '/coupons',
     component: Coupons,
+  },
+  {
+    path: '/districts',
+    component: Districts,
   },
   { path: '/setting', component: EditProfile },
   {
