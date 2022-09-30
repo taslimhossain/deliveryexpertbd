@@ -13,6 +13,7 @@ const useFilter = (data) => {
   const [sortedField, setSortedField] = useState('');
   const [searchText, setSearchText] = useState('');
   const [searchUser, setSearchUser] = useState('');
+  const [searchDistricts, setSearchDistricts] = useState('');
   const [searchCoupon, setSearchCoupon] = useState('');
   const [searchOrder, setSearchOrder] = useState('');
   const [categoryType, setCategoryType] = useState('');
@@ -31,6 +32,7 @@ const useFilter = (data) => {
   const searchRef = useRef('');
   const userRef = useRef('');
   const couponRef = useRef('');
+  const districtsRef = useRef('');
   const orderRef = useRef('');
   const categoryRef = useRef('');
   dayjs.extend(isBetween);
@@ -142,6 +144,13 @@ const useFilter = (data) => {
       );
     }
 
+    if (searchDistricts) {
+      services = services.filter(
+        (search) =>
+          search.name.toLowerCase().includes(searchDistricts.toLowerCase())
+      );
+    }
+
     // order filtering
     if (status) {
       services = services.filter((order) => order.status === status);
@@ -166,6 +175,7 @@ const useFilter = (data) => {
     searchText,
     searchUser,
     searchCoupon,
+    searchDistricts,
     searchOrder,
     categoryType,
     status,
@@ -211,6 +221,11 @@ const useFilter = (data) => {
     setSearchCoupon(couponRef.current.value);
   };
 
+  const handleSubmitDistricts = (e) => {
+    e.preventDefault();
+    setSearchDistricts(districtsRef.current.value);
+  };
+
   const handleSubmitOrder = (e) => {
     e.preventDefault();
     setSearchOrder(orderRef.current.value);
@@ -247,6 +262,7 @@ const useFilter = (data) => {
     userRef,
     searchRef,
     couponRef,
+    districtsRef,
     orderRef,
     categoryRef,
     pending,
@@ -268,6 +284,7 @@ const useFilter = (data) => {
     handleSubmitUser,
     handleSubmitForAll,
     handleSubmitCoupon,
+    handleSubmitDistricts,
     handleSubmitOrder,
     handleSubmitCategory,
     handleOnDrop,

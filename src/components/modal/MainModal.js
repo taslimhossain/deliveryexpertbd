@@ -10,6 +10,7 @@ import ProductServices from '../../services/ProductServices';
 import CategoryServices from '../../services/CategoryServices';
 import { SidebarContext } from '../../context/SidebarContext';
 import { notifySuccess, notifyError } from '../../utils/toast';
+import DistrictsServices from '../../services/DistrictsServices';
 
 const MainModal = ({ id }) => {
   const { isModalOpen, closeModal, setIsUpdate } = useContext(SidebarContext);
@@ -54,6 +55,17 @@ const MainModal = ({ id }) => {
         .catch((err) => notifyError(err.message));
       closeModal();
     }
+
+    if (location.pathname === '/districts') {
+      DistrictsServices.deleteDistrict(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }    
+
     if (location.pathname === '/our-rider') {
       AdminServices.deleteStaff(id)
         .then((res) => {

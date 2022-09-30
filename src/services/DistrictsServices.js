@@ -2,19 +2,20 @@ import requests from './httpService';
 
 const DistrictsServices = {
   addDistrict(body) {
-    return requests.post('/districts/add', body);
+    console.log('submit distric', body)
+    return requests.post('/admin/district', body);
   },
   getAllDistrict() {
     return requests.get('/admin/district');
   },
   getDistrictById(id) {
-    return requests.get(`/districts/${id}`);
+    return requests.get(`/admin/district/${id}`);
   },
   updateDistrict(id, body) {
-    return requests.put(`/districts/${id}`, body);
+    return requests.put(`/admin/district/${id}`, body);
   },
   deleteDistrict(id) {
-    return requests.delete(`/districts/${id}`);
+    return requests.delete(`/admin/district/${id}`);
   },
 };
 

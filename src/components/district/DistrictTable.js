@@ -4,18 +4,18 @@ import { TableCell, TableBody, TableRow, Badge } from '@windmill/react-ui';
 
 import MainModal from '../modal/MainModal';
 import MainDrawer from '../drawer/MainDrawer';
-import CouponDrawer from '../drawer/CouponDrawer';
+import DistrictDrawer from '../drawer/DistrictDrawer';
 import useToggleDrawer from '../../hooks/useToggleDrawer';
 import EditDeleteButton from '../table/EditDeleteButton';
 
 const DistrictTable = ({ districts }) => {
   const { serviceId, handleModalOpen, handleUpdate } = useToggleDrawer();
-  console.log('districtsdistrictsdistrictsdistricts', districts)
+
   return (
     <>
       <MainModal id={serviceId} />
       <MainDrawer>
-        <CouponDrawer id={serviceId} />
+        <DistrictDrawer id={serviceId} />
       </MainDrawer>
 
       <TableBody>
@@ -38,8 +38,8 @@ const DistrictTable = ({ districts }) => {
               </span>{' '}
             </TableCell>
             <TableCell className="align-middle ">
-              { district.status === 0 ? (
-                <Badge type="danger">Expired</Badge>
+              { district.status === false ? (
+                <Badge type="danger">InActive</Badge>
               ) : (
                 <Badge type="success">Active</Badge>
               )}

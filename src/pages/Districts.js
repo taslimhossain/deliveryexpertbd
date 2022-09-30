@@ -32,8 +32,8 @@ const Districts = () => {
   const districtsData = data.district ? data.district : [];
 
   const {
-    handleSubmitCoupon,
-    couponRef,
+    handleSubmitDistricts,
+    districtsRef,
     dataTable,
     serviceData,
     totalResults,
@@ -52,12 +52,12 @@ const Districts = () => {
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
           <form
-            onSubmit={handleSubmitCoupon}
+            onSubmit={handleSubmitDistricts}
             className="py-3 grid gap-4 lg:gap-6 xl:gap-6 md:flex xl:flex"
           >
             <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
               <Input
-                ref={couponRef}
+                ref={districtsRef}
                 type="search"
                 className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
                 placeholder="Search by coupon code/name"
@@ -102,7 +102,7 @@ const Districts = () => {
           </TableFooter>
         </TableContainer>
       ) : (
-        <NotFound title="Coupon" />
+        <NotFound title="District" />
       )}
     </>
   );

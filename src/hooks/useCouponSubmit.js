@@ -84,7 +84,6 @@ const useCouponSubmit = (id) => {
           notifyError('There is a server error!');
         });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id, setValue, isDrawerOpen]);
   return {
     register,

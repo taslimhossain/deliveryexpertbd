@@ -1,9 +1,17 @@
 import requests from './httpService';
 
 const AdminServices = {
+  
   registerAdmin(body) {
-    console.log('body', body);
     return requests.post('/admin/register', body);
+  },
+
+  registerMerchant(body) {
+    return requests.post('/admin/register', body);
+  },
+
+  registerRider(body) {
+    return requests.post('/rider/register', body);
   },
 
   loginAdmin(body) {

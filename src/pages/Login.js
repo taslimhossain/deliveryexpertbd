@@ -81,9 +81,16 @@ const Login = () => {
                 <p className="mt-1">
                   <Link
                     className="text-sm font-medium text-green-500 dark:text-green-400 hover:underline"
-                    to="/signup"
+                    to="/merchant-signup"
                   >
-                    Create account
+                    Create merchant account
+                  </Link>
+                </p>
+                <p className="mt-1">
+                  <Link
+                    className="text-sm font-medium text-green-500 dark:text-green-400 hover:underline"
+                    to="/rider-signup"
+                  >Create rider account
                   </Link>
                 </p>
               </div>

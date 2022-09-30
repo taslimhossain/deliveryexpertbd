@@ -16,7 +16,7 @@ const useLoginSubmit = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = ({ name, email, password_confirmation, login, mobile_no, verifyLogin, password }) => {
+  const onSubmit = ({ name, email, password_confirmation, signuppage, login, mobile_no, verifyLogin, password }) => {
     setLoading(true);
 
     if (verifyLogin) {
@@ -30,7 +30,10 @@ const useLoginSubmit = () => {
           notifyError(err ? err.response.data.message : err.message);
         });
     } else if (name) {
-      AdminServices.registerAdmin({ name, mobile_no, email, password, password_confirmation })
+        console.log('hello', signuppage)
+
+      if(signuppage === 'riderpage'){
+        AdminServices.registerRider({ name, mobile_no, email, password, password_confirmation, signuppage })
         .then((res) => {
           if (res) {
             setLoading(false);
@@ -43,7 +46,44 @@ const useLoginSubmit = () => {
         .catch((err) => {
           notifyError(err ? err.response.data.message : err.message);
           setLoading(false);
-        });
+        });        
+      }
+
+      if(signuppage === 'merchantpage'){
+        AdminServices.registerMerchant({ name, mobile_no, email, password, password_confirmation, signuppage })
+        .then((res) => {
+          if (res) {
+            setLoading(false);
+            notifySuccess('Register Success!');
+            dispatch({ type: 'USER_LOGIN', payload: res });
+            Cookies.set('adminInfo', JSON.stringify(res));
+            history.replace('/');
+          }
+        })
+        .catch((err) => {
+          notifyError(err ? err.response.data.message : err.message);
+          setLoading(false);
+        });        
+      }
+
+      if(signuppage === 'adminpage'){
+          AdminServices.registerAdmin({ name, mobile_no, email, password, password_confirmation, signuppage })
+          .then((res) => {
+            if (res) {
+              setLoading(false);
+              notifySuccess('Register Success!');
+              dispatch({ type: 'USER_LOGIN', payload: res });
+              Cookies.set('adminInfo', JSON.stringify(res));
+              history.replace('/');
+            }
+          })
+          .catch((err) => {
+            notifyError(err ? err.response.data.message : err.message);
+            setLoading(false);
+          });
+      }
+
+        
     } else {
       AdminServices.loginAdmin({ login, password })
         .then((res) => {
