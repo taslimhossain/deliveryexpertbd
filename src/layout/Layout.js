@@ -6,12 +6,17 @@ import routes from '../routes';
 import Header from '../components/header/Header';
 import Sidebar from '../components/sidebar/Sidebar';
 import { SidebarContext } from '../context/SidebarContext';
+import { AdminContext } from '../context/AdminContext';
 import ThemeSuspense from '../components/theme/ThemeSuspense';
 
 const Page404 = lazy(() => import('../pages/404'));
+const NoPermission = lazy(() => import('../pages/403'));
 
 const Layout = () => {
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);
+  const { state } = useContext(AdminContext);
+  const { adminInfo } = state;
+  const currentRole = adminInfo?.user?.user_role ? adminInfo.user.user_role : '';
   let location = useLocation();
 
   useEffect(() => {
@@ -33,7 +38,8 @@ const Layout = () => {
           <Suspense fallback={<ThemeSuspense />}>
             <Switch>
               {routes.map((route, i) => {
-                return route.component ? (
+                const canAccess = route.userRole.includes(currentRole);
+                return route.component && canAccess ? (
                   <Route
                     key={i}
                     exact={true}

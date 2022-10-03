@@ -1,4 +1,6 @@
 import { lazy } from 'react';
+import UserRole from '../hooks/UserRole';
+import Zones from '../pages/Zones';
 
 // use lazy for better code splitting
 const Dashboard = lazy(() => import('../pages/Dashboard'));
@@ -27,59 +29,82 @@ const EditProfile = lazy(() => import('../pages/EditProfile'));
 //  * `routes/sidebar.js`
  */
 
+
 const routes = [
   {
     path: '/dashboard',
     component: Dashboard,
+    userRole: UserRole.superAdmin(),
   },
   {
     path: '/products',
     component: Products,
+    userRole: UserRole.superAdmin(),
   },
   {
     path: '/product/:id',
     component: ProductDetails,
+    userRole: UserRole.noRole(),
   },
   {
     path: '/category',
     component: Category,
+    userRole: UserRole.merchant(),
   },
   {
     path: '/merchants',
     component: Merchants,
+    userRole: UserRole.merchant(),
   },
   {
     path: '/customer-order/:id',
     component: CustomerOrder,
+    userRole: UserRole.noRole(),
   },
   {
     path: '/our-rider',
     component: Rider,
+    userRole: UserRole.rider(),
   },
   {
     path: '/orders',
     component: Orders,
+    userRole: UserRole.manager(),
   },
   {
     path: '/order/:id',
     component: OrderInvoice,
+    userRole: UserRole.noRole(),
   },
   {
     path: '/coupons',
     component: Coupons,
+    userRole: UserRole.rider(),
   },
   {
     path: '/districts',
     component: Districts,
+    userRole: UserRole.superAdmin(),
   },
-  { path: '/setting', component: EditProfile },
+  {
+    path: '/zones',
+    component: Zones,
+    userRole: UserRole.superAdmin(),
+  },
+  { 
+    path: '/setting', 
+    component: EditProfile,
+    userRole: UserRole.superAdmin(),
+  },
   {
     path: '/404',
     component: Page404,
+    userRole: UserRole.noRole(),
   },
   {
     path: '/edit-profile',
     component: EditProfile,
+    userRole: UserRole.noRole(),
   },
 ];
 
