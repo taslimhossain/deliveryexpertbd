@@ -21,7 +21,6 @@ const SidebarContent = () => {
   };
 
   const sidbarMenu = (route) => {
-      console.log('route.userRoleroute.userRoleroute.userRole', route.userRole)
       const canAccess = route.userRole.includes(currentRole);
       if(!canAccess){
         return '';

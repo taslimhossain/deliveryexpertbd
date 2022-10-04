@@ -19,34 +19,28 @@ import NotFound from '../components/table/NotFound';
 import Loading from '../components/preloader/Loading';
 import ZonesServices from '../services/ZonesServices';
 import { SidebarContext } from '../context/SidebarContext';
-
 import PageTitle from '../components/Typography/PageTitle';
-import MainDrawer from '../components/drawer/MainDrawer';
-import CouponDrawer from '../components/drawer/CouponDrawer';
 import ZoneTable from '../components/zone/ZoneTable';
+import SelectDistrictFilter from '../components/form/SelectDistrictFilter';
 
 const Zones = () => {
   const { toggleDrawer } = useContext(SidebarContext);
   const { data, loading } = useAsync(ZonesServices.getAllItem);
-  const zonesData = data.zone ? data.zone : [];
-
+ 
   const {
     handleSubmitDistricts,
     districtsRef,
+    setDistrictFilter,
     dataTable,
     serviceData,
     totalResults,
     resultsPerPage,
     handleChangePage,
-  } = useFilter(zonesData);
+  } = useFilter(data);
 
   return (
     <>
       <PageTitle>Zones</PageTitle>
-
-      <MainDrawer>
-        <CouponDrawer />
-      </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
@@ -61,6 +55,9 @@ const Zones = () => {
                 className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
                 placeholder="Search by coupon code/name"
               />
+            </div>
+            <div className="flex-grow-0 md:flex-grow lg:flex-grow xl:flex-grow">
+              <SelectDistrictFilter setDistrictFilter={setDistrictFilter} />
             </div>
             <div className="w-full md:w-56 lg:w-56 xl:w-56">
               <Button onClick={toggleDrawer} className="w-full rounded-md h-12">
@@ -101,7 +98,7 @@ const Zones = () => {
           </TableFooter>
         </TableContainer>
       ) : (
-        <NotFound title="District" />
+        <NotFound title="Zone" />
       )}
     </>
   );

@@ -10,6 +10,7 @@ import { notifyError, notifySuccess } from '../utils/toast';
 
 const useFilter = (data) => {
   const [filter, setFilter] = useState('');
+  const [DistrictFilter, setDistrictFilter] = useState('');
   const [sortedField, setSortedField] = useState('');
   const [searchText, setSearchText] = useState('');
   const [searchUser, setSearchUser] = useState('');
@@ -99,6 +100,12 @@ const useFilter = (data) => {
       services = services.filter((item) => item.parent === filter);
     }
 
+    if (DistrictFilter) {
+      console.log('i am here', DistrictFilter)
+      console.log('i am services', services)
+      services = services.filter((item) => item.district_id === parseInt(DistrictFilter));
+    }
+
     if (sortedField === 'Low') {
       services = services.sort((a, b) => a.price < b.price && -1);
     }
@@ -170,6 +177,7 @@ const useFilter = (data) => {
     return services;
   }, [
     filter,
+    DistrictFilter,
     sortedField,
     data,
     searchText,
@@ -272,6 +280,7 @@ const useFilter = (data) => {
     monthlyOrder,
     totalOrder,
     setFilter,
+    setDistrictFilter,
     setSortedField,
     setStatus,
     setRole,

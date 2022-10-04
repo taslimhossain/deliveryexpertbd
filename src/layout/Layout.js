@@ -10,7 +10,6 @@ import { AdminContext } from '../context/AdminContext';
 import ThemeSuspense from '../components/theme/ThemeSuspense';
 
 const Page404 = lazy(() => import('../pages/404'));
-const NoPermission = lazy(() => import('../pages/403'));
 
 const Layout = () => {
   const { isSidebarOpen, closeSidebar } = useContext(SidebarContext);

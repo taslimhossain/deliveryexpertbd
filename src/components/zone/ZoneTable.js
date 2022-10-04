@@ -1,10 +1,9 @@
 import React from 'react';
-import * as dayjs from 'dayjs';
 import { TableCell, TableBody, TableRow, Badge } from '@windmill/react-ui';
 
 import MainModal from '../modal/MainModal';
 import MainDrawer from '../drawer/MainDrawer';
-import DistrictDrawer from '../drawer/DistrictDrawer';
+import ZoneDrawer from '../drawer/ZoneDrawer';
 import useToggleDrawer from '../../hooks/useToggleDrawer';
 import EditDeleteButton from '../table/EditDeleteButton';
 
@@ -15,12 +14,11 @@ const ZoneTable = ({ zones }) => {
     <>
       <MainModal id={serviceId} />
       <MainDrawer>
-        <DistrictDrawer id={serviceId} />
+        <ZoneDrawer id={serviceId} />
       </MainDrawer>
 
       <TableBody>
         {zones.map((zone, i) => (
-      
           <TableRow key={i + 1}>
             <TableCell>
               <span className="font-semibold uppercase text-xs">

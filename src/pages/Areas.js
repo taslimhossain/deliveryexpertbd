@@ -17,17 +17,16 @@ import useAsync from '../hooks/useAsync';
 import useFilter from '../hooks/useFilter';
 import NotFound from '../components/table/NotFound';
 import Loading from '../components/preloader/Loading';
-import CouponServices from '../services/CouponServices';
 import { SidebarContext } from '../context/SidebarContext';
-import CouponTable from '../components/coupon/CouponTable';
 import PageTitle from '../components/Typography/PageTitle';
-import MainDrawer from '../components/drawer/MainDrawer';
-import CouponDrawer from '../components/drawer/CouponDrawer';
+import AreaServices from '../services/AreaServices';
+import AreaTable from '../components/area/AreaTable';
 
-const Coupons = () => {
+
+const Areas = () => {
   const { toggleDrawer } = useContext(SidebarContext);
-  const { data, loading } = useAsync(CouponServices.getAllCoupons);
-  console.log('this is cupon ', data)
+  const { data, loading } = useAsync(AreaServices.getAllItems);
+
   const {
     handleSubmitCoupon,
     couponRef,
@@ -40,11 +39,7 @@ const Coupons = () => {
 
   return (
     <>
-      <PageTitle>Coupons</PageTitle>
-
-      <MainDrawer>
-        <CouponDrawer />
-      </MainDrawer>
+      <PageTitle>Area</PageTitle>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
@@ -57,7 +52,7 @@ const Coupons = () => {
                 ref={couponRef}
                 type="search"
                 className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 border-transparent focus:bg-white"
-                placeholder="Search by coupon code/name"
+                placeholder="Search area"
               />
             </div>
             <div className="w-full md:w-56 lg:w-56 xl:w-56">
@@ -65,7 +60,7 @@ const Coupons = () => {
                 <span className="mr-3">
                   <FiPlus />
                 </span>
-                Add Coupon
+                Add Area
               </Button>
             </div>
           </form>
@@ -80,17 +75,13 @@ const Coupons = () => {
             <TableHeader>
               <tr>
                 <TableCell>ID</TableCell>
-                <TableCell>Start Date</TableCell>
-                <TableCell>End Date</TableCell>
-                <TableCell>Campaigns Name</TableCell>
-                <TableCell>Code</TableCell>
-                <TableCell>Percentage</TableCell>
-                <TableCell>Product Type</TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Zone</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>
               </tr>
             </TableHeader>
-            <CouponTable coupons={dataTable} />
+            <AreaTable tdata={dataTable} />
           </Table>
           <TableFooter>
             <Pagination
@@ -108,4 +99,4 @@ const Coupons = () => {
   );
 };
 
-export default Coupons;
+export default Areas;

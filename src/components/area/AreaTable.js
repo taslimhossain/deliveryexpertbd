@@ -1,43 +1,45 @@
 import React from 'react';
+import * as dayjs from 'dayjs';
 import { TableCell, TableBody, TableRow, Badge } from '@windmill/react-ui';
 
 import MainModal from '../modal/MainModal';
 import MainDrawer from '../drawer/MainDrawer';
-import DistrictDrawer from '../drawer/DistrictDrawer';
+import AreaDrawer from '../drawer/AreaDrawer';
 import useToggleDrawer from '../../hooks/useToggleDrawer';
 import EditDeleteButton from '../table/EditDeleteButton';
 
-const DistrictTable = ({ districts }) => {
+const AreaTable = ({ tdata }) => {
   const { serviceId, handleModalOpen, handleUpdate } = useToggleDrawer();
 
   return (
     <>
       <MainModal id={serviceId} />
       <MainDrawer>
-        <DistrictDrawer id={serviceId} />
+        <AreaDrawer id={serviceId} />
       </MainDrawer>
 
       <TableBody>
-        {districts.map((district, i) => (
-      
+        {tdata.map((item, i) => (
           <TableRow key={i + 1}>
             <TableCell>
               <span className="font-semibold uppercase text-xs">
-                {district.id}
+                {item.id}
               </span>
             </TableCell>
             <TableCell>
-              {' '}
-              <span className="text-sm"> {district.name}</span>{' '}
+              <span className="text-sm">
+                {' '}
+                {item.name}
+              </span>
             </TableCell>
             <TableCell>
-              {' '}
-              <span className="text-sm font-semibold">
-                {Math.round(district.cost)}.00 ৳
-              </span>{' '}
+              <span className="text-sm">
+                {' '}
+                {item.zone_name}
+              </span>
             </TableCell>
             <TableCell className="align-middle ">
-              { district.status === false ? (
+              { item.status === false ? (
                 <Badge type="danger">InActive</Badge>
               ) : (
                 <Badge type="success">Active</Badge>
@@ -45,7 +47,7 @@ const DistrictTable = ({ districts }) => {
             </TableCell>
             <TableCell>
               <EditDeleteButton
-                id={district.id}
+                id={item.id}
                 handleUpdate={handleUpdate}
                 handleModalOpen={handleModalOpen}
               />
@@ -57,4 +59,4 @@ const DistrictTable = ({ districts }) => {
   );
 };
 
-export default DistrictTable;
+export default AreaTable;

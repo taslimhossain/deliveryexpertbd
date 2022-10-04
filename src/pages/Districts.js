@@ -21,15 +21,12 @@ import DistrictsServices from '../services/DistrictsServices';
 import { SidebarContext } from '../context/SidebarContext';
 //import CouponTable from '../components/coupon/CouponTable';
 import DistrictTable from '../components/district/DistrictTable';
-
 import PageTitle from '../components/Typography/PageTitle';
-import MainDrawer from '../components/drawer/MainDrawer';
-import CouponDrawer from '../components/drawer/CouponDrawer';
+
 
 const Districts = () => {
   const { toggleDrawer } = useContext(SidebarContext);
   const { data, loading } = useAsync(DistrictsServices.getAllDistrict);
-  const districtsData = data.district ? data.district : [];
 
   const {
     handleSubmitDistricts,
@@ -39,16 +36,11 @@ const Districts = () => {
     totalResults,
     resultsPerPage,
     handleChangePage,
-  } = useFilter(districtsData);
+  } = useFilter(data);
 
   return (
     <>
       <PageTitle>Districts</PageTitle>
-
-      <MainDrawer>
-        <CouponDrawer />
-      </MainDrawer>
-
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
           <form
@@ -89,7 +81,6 @@ const Districts = () => {
                 <TableCell className="text-right">Actions</TableCell>
               </tr>
             </TableHeader>
-            {/* <CouponTable coupons={dataTable} /> */}
             <DistrictTable districts={dataTable} />
           </Table>
           <TableFooter>

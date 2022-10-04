@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { SidebarContext } from '../context/SidebarContext';
-import DistrictsServices from '../services/DistrictsServices';
+import AreaServices from '../services/AreaServices';
 import { notifyError, notifySuccess } from '../utils/toast';
 
-const useDistrictSubmit = (id) => {
+const useAreaSubmit = (id) => {
   const { isDrawerOpen, closeDrawer, setIsUpdate } = useContext(SidebarContext);
 
   const {
@@ -15,15 +15,14 @@ const useDistrictSubmit = (id) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log('datadatadata', data)
-    const CouponData = {
-      name: data.districtName,
-      price: data.districtCost,
-      status: data.districtStatus,
+    const ItemData = {
+      name: data.areaName,
+      zone_id: data.areaZone,
+      status: data.itemStatus,
     };
 
     if (id) {
-      DistrictsServices.updateDistrict(id, CouponData)
+      AreaServices.updateItem(id, ItemData)
         .then((res) => {
           setIsUpdate(true);
           notifySuccess(res.message);
@@ -31,7 +30,7 @@ const useDistrictSubmit = (id) => {
         .catch((err) => notifyError(err.message));
       closeDrawer();
     } else {
-      DistrictsServices.addDistrict(CouponData)
+      AreaServices.addItem(ItemData)
         .then((res) => {
           setIsUpdate(true);
           notifySuccess(res.message);
@@ -43,18 +42,18 @@ const useDistrictSubmit = (id) => {
 
   useEffect(() => {
     if (!isDrawerOpen) {
-      setValue('districtName');
-      setValue('districtCost');
-      setValue('districtStatus');
+      setValue('areaName');
+      setValue('areaZone');
+      setValue('itemStatus');
       return;
     }
     if (id) {
-      DistrictsServices.getDistrictById(id)
+      AreaServices.getItemById(id)
         .then((res) => {
           if (res && res.status === 'success') {
-            setValue('districtName', res.data.name);
-            setValue('districtCost', res.data.cost);
-            setValue('districtStatus', res.data.status === true ? 1 : 0);
+            setValue('areaName', res.data.name);
+            setValue('areaZone', res.data.zone_id);
+            setValue('itemStatus', res.data.status === true ? 1 : 0);
           }
         })
         .catch((err) => {
@@ -70,4 +69,4 @@ const useDistrictSubmit = (id) => {
   };
 };
 
-export default useDistrictSubmit;
+export default useAreaSubmit;

@@ -11,6 +11,8 @@ import CategoryServices from '../../services/CategoryServices';
 import { SidebarContext } from '../../context/SidebarContext';
 import { notifySuccess, notifyError } from '../../utils/toast';
 import DistrictsServices from '../../services/DistrictsServices';
+import ZonesServices from '../../services/ZonesServices';
+import AreaServices from '../../services/AreaServices';
 
 const MainModal = ({ id }) => {
   const { isModalOpen, closeModal, setIsUpdate } = useContext(SidebarContext);
@@ -58,6 +60,26 @@ const MainModal = ({ id }) => {
 
     if (location.pathname === '/districts') {
       DistrictsServices.deleteDistrict(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }    
+
+    if (location.pathname === '/zones') {
+      ZonesServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }    
+
+    if (location.pathname === '/areas') {
+      AreaServices.deleteItem(id)
         .then((res) => {
           setIsUpdate(true);
           notifySuccess(res.message);

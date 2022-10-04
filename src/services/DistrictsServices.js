@@ -8,6 +8,9 @@ const DistrictsServices = {
   getAllDistrict() {
     return requests.get('/admin/district');
   },
+  getAllOption() {
+    return requests.get('/selectoption');
+  },
   getDistrictById(id) {
     return requests.get(`/admin/district/${id}`);
   },
