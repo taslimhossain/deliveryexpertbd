@@ -68,6 +68,13 @@ const sidebar = [
   },
 
   {
+    path: '/pickup-location',
+    icon: FiGift,
+    name: 'Pickup Location',
+    userRole: UserRole.merchant(),
+  },
+
+  {
     icon: FiSettings,
     name: 'Courier Settings',
     userRole: UserRole.superAdmin(),
@@ -86,6 +93,36 @@ const sidebar = [
         path: '/areas',
         icon: FiGift,
         name: 'Areas',
+      },
+      {
+        path: '/producttypes',
+        icon: FiGift,
+        name: 'Product types',
+      },
+      {
+        path: '/servicetypes',
+        icon: FiGift,
+        name: 'Service types',
+      },
+      {
+        path: '/weights',
+        icon: FiGift,
+        name: 'Weights',
+      },
+      {
+        path: '/ridercosts',
+        icon: FiGift,
+        name: 'Rider fee',
+      },
+      {
+        path: '/merchantcosts',
+        icon: FiGift,
+        name: 'Merchant fee',
+      }
+      {
+        path: '/hubs',
+        icon: FiGift,
+        name: 'Hubs',
       }
     ],
   },

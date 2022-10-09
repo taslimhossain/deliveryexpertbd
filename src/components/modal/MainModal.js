@@ -13,6 +13,7 @@ import { notifySuccess, notifyError } from '../../utils/toast';
 import DistrictsServices from '../../services/DistrictsServices';
 import ZonesServices from '../../services/ZonesServices';
 import AreaServices from '../../services/AreaServices';
+import PickupLocationServices from '../../services/PickupLocationServices';
 
 const MainModal = ({ id }) => {
   const { isModalOpen, closeModal, setIsUpdate } = useContext(SidebarContext);
@@ -80,6 +81,16 @@ const MainModal = ({ id }) => {
 
     if (location.pathname === '/areas') {
       AreaServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }    
+
+    if (location.pathname === '/pickup-location') {
+      PickupLocationServices.deleteItem(id)
         .then((res) => {
           setIsUpdate(true);
           notifySuccess(res.message);

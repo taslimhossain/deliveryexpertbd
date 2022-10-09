@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import UserRole from '../hooks/UserRole';
 import Areas from '../pages/Areas';
+import PickupLocation from '../pages/PickupLocation';
 import Zones from '../pages/Zones';
 
 // use lazy for better code splitting
@@ -83,6 +84,11 @@ const routes = [
     userRole: UserRole.rider(),
   },
   {
+    path: '/pickup-location',
+    component: PickupLocation,
+    userRole: UserRole.merchant(),
+  },
+  {
     path: '/districts',
     component: Districts,
     userRole: UserRole.superAdmin(),
@@ -95,6 +101,11 @@ const routes = [
   {
     path: '/areas',
     component: Areas,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/producttypes',
+    component: Producttype,
     userRole: UserRole.superAdmin(),
   },
   { 
