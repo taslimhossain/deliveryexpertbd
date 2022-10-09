@@ -118,7 +118,7 @@ const sidebar = [
         path: '/merchantcosts',
         icon: FiGift,
         name: 'Merchant fee',
-      }
+      },
       {
         path: '/hubs',
         icon: FiGift,
