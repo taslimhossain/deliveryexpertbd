@@ -6,25 +6,25 @@ import Error from '../form/Error';
 import LabelArea from '../form/LabelArea';
 import InputArea from '../form/InputArea';
 import DrawerButton from '../form/DrawerButton';
-import useProductTypeSubmit from '../../hooks/useProductTypeSubmit';
+import useServiceTypeSubmit from '../../hooks/useServiceTypeSubmit';
 import SelectStatusOption from '../form/SelectStatusOption';
 
 
-const ProductTypeDrawer = ({ id }) => {
-  const { register, handleSubmit, onSubmit, errors } = useProductTypeSubmit(id);
+const ServiceTypeDrawer = ({ id }) => {
+  const { register, handleSubmit, onSubmit, errors } = useServiceTypeSubmit(id);
   
   return (
     <>
       <div className="w-full relative p-6 border-b border-gray-100 bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
         {id ? (
           <Title
-            title="Update Product type"
-            description="Updated your Product type and necessary information from here"
+            title="Update Service type"
+            description="Updated your Service type and necessary information from here"
           />
         ) : (
           <Title
-            title="Add Product type"
-            description="Add your Product type and necessary information from here"
+            title="Add Service type"
+            description="Add your Service type and necessary information from here"
           />
         )}
       </div>
@@ -82,4 +82,4 @@ const ProductTypeDrawer = ({ id }) => {
   );
 };
 
-export default ProductTypeDrawer;
+export default ServiceTypeDrawer;

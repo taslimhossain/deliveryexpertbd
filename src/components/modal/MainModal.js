@@ -15,6 +15,8 @@ import ZonesServices from '../../services/ZonesServices';
 import AreaServices from '../../services/AreaServices';
 import PickupLocationServices from '../../services/PickupLocationServices';
 import ProductTypeServices from '../../services/ProductTypeServices';
+import ServiceTypeServices from '../../services/ServiceTypeServices';
+import WeightServices from '../../services/WeightServices';
 
 const MainModal = ({ id }) => {
   const { isModalOpen, closeModal, setIsUpdate } = useContext(SidebarContext);
@@ -102,6 +104,26 @@ const MainModal = ({ id }) => {
 
     if (location.pathname === '/producttypes') {
       ProductTypeServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }    
+
+    if (location.pathname === '/servicetypes') {
+      ServiceTypeServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }    
+
+    if (location.pathname === '/weights') {
+      WeightServices.deleteItem(id)
         .then((res) => {
           setIsUpdate(true);
           notifySuccess(res.message);

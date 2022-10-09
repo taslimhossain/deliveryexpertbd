@@ -3,6 +3,8 @@ import UserRole from '../hooks/UserRole';
 import Areas from '../pages/Areas';
 import PickupLocation from '../pages/PickupLocation';
 import ProductType from '../pages/ProductType';
+import ServiceType from '../pages/ServiceType';
+import Weight from '../pages/Weight';
 import Zones from '../pages/Zones';
 
 // use lazy for better code splitting
@@ -107,6 +109,16 @@ const routes = [
   {
     path: '/producttypes',
     component: ProductType,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/servicetypes',
+    component: ServiceType,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/weights',
+    component: Weight,
     userRole: UserRole.superAdmin(),
   },
   { 
