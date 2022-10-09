@@ -1,6 +1,7 @@
 import { lazy } from 'react';
 import UserRole from '../hooks/UserRole';
 import Areas from '../pages/Areas';
+import Merchantcost from '../pages/Merchantcost';
 import PickupLocation from '../pages/PickupLocation';
 import ProductType from '../pages/ProductType';
 import ServiceType from '../pages/ServiceType';
@@ -119,6 +120,11 @@ const routes = [
   {
     path: '/weights',
     component: Weight,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/merchantcosts',
+    component: Merchantcost,
     userRole: UserRole.superAdmin(),
   },
   { 
