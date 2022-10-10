@@ -41,6 +41,14 @@ const WeightTable = ({ weights }) => {
               </span>{' '}
             </TableCell>
 
+            <TableCell>
+              {' '}
+              <span className="text-sm font-semibold">
+                {' '}
+                00
+              </span>{' '}
+            </TableCell>
+
             <TableCell className="align-middle ">
               { item.status === false ? (
                 <Badge type="danger">InActive</Badge>

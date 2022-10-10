@@ -45,14 +45,6 @@ const MerchantcostTable = ({ merchantcosts }) => {
               <span className="text-sm"> {item.discount_amount} </span>{' '}
             </TableCell>
 
-            <TableCell>
-              {' '}
-              <span className="text-sm font-semibold">
-                {' '}
-                {item.amount}
-              </span>{' '}
-            </TableCell>
-
             <TableCell className="align-middle ">
               { item.status === false ? (
                 <Badge type="danger">InActive</Badge>

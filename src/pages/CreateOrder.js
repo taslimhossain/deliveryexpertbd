@@ -53,7 +53,7 @@ const CreateOrder = () => {
             
             <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
               <div className="col-span-8 sm:col-span-4">
-                <LabelArea label="Note" />
+                <LabelArea label="Merchant Order ID" />
                 <InputArea
                   register={register}
                   label="Note"
