@@ -26,6 +26,7 @@ const Districts = lazy(() => import('../pages/Districts'));
 // const Setting = lazy(() => import("../pages/Setting"));
 const Page404 = lazy(() => import('../pages/404'));
 const EditProfile = lazy(() => import('../pages/EditProfile'));
+const CreateOrder = lazy(() => import('../pages/CreateOrder'));
 
 /*
 //  * ⚠ These are internal routes!
@@ -83,7 +84,12 @@ const routes = [
   {
     path: '/order/:id',
     component: OrderInvoice,
-    userRole: UserRole.noRole(),
+    userRole: UserRole.rider(),
+  },
+  {
+    path: '/new-order',
+    component: CreateOrder,
+    userRole: UserRole.merchant(),
   },
   {
     path: '/coupons',
@@ -158,7 +164,7 @@ const routes = [
   {
     path: '/edit-profile',
     component: EditProfile,
-    userRole: UserRole.noRole(),
+    userRole: UserRole.rider(),
   },
 ];
 

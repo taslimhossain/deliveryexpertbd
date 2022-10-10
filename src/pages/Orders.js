@@ -12,7 +12,7 @@ import {
   CardBody,
   Pagination,
 } from '@windmill/react-ui';
-import { IoCloudDownloadOutline } from 'react-icons/io5';
+import { IoCloudDownloadOutline, IoSettingsOutline } from 'react-icons/io5';
 
 import orderData from '../utils/orders';
 import useAsync from '../hooks/useAsync';
@@ -22,6 +22,8 @@ import OrderServices from '../services/OrderServices';
 import Loading from '../components/preloader/Loading';
 import OrderTable from '../components/order/OrderTable';
 import PageTitle from '../components/Typography/PageTitle';
+import { Link } from 'react-router-dom';
+import { FiPlus } from 'react-icons/fi';
 
 const Orders = () => {
   const { data, loading } = useAsync(OrderServices.getAllOrders);
@@ -84,14 +86,21 @@ const Orders = () => {
               </Select>
             </div>
             <div>
-              <CSVDownloader data={orderData} filename={'orders'}>
+
+
+            <Link to="/new-order" className="flex items-center justify-center text-sm leading-5 h-12 w-full text-center transition-colors duration-150 font-medium focus:outline-none px-6 py-2 rounded-md text-white bg-green-500 border border-transparent active:bg-green-600 hover:bg-green-600 focus:ring focus:ring-purple-300 w-auto"><span className="flex items-center text-sm">
+            <FiPlus  className="w-4 h-4 mr-3"/>
+              <span>New order</span></span>
+            </Link>
+
+              {/* <CSVDownloader data={orderData} filename={'orders'}>
                 <button className="flex items-center justify-center text-sm leading-5 h-12 w-full text-center transition-colors duration-150 font-medium focus:outline-none px-6 py-2 rounded-md text-white bg-green-500 border border-transparent active:bg-green-600 hover:bg-green-600 focus:ring focus:ring-purple-300 w-auto">
                   Download all Orders
                   <span className="ml-2 text-base">
                     <IoCloudDownloadOutline />
                   </span>
                 </button>
-              </CSVDownloader>
+              </CSVDownloader> */}
             </div>
           </form>
         </CardBody>

@@ -36,12 +36,17 @@ const sidebar = [
     userRole: UserRole.merchant(),
   },
   {
+    path: '/new-order',
+    icon: FiCompass,
+    name: 'New order',
+    userRole: UserRole.merchant(),
+  },
+  {
     path: '/orders',
     icon: FiCompass,
     name: 'Orders',
     userRole: UserRole.manager(),
   },
-
   {
     icon: FiSettings,
     name: 'Pickup',

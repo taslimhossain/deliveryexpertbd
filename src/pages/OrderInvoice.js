@@ -47,7 +47,7 @@ const OrderInvoice = () => {
                   Status:{' '}
                   <span className="pl-2 font-medium text-xs capitalize">
                     {' '}
-                    <Status status={data.status} />
+                    <Status status={'Pending'} />
                   </span>
                 </p>
               </h1>
@@ -70,9 +70,10 @@ const OrderInvoice = () => {
                   Date
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 block">
-                  {data.createdAt !== undefined && (
+                  here data will show
+                  {/* {data.createdAt !== undefined && (
                     <span>{dayjs(data?.createdAt).format('MMMM D, YYYY')}</span>
-                  )}
+                  )} */}
                 </span>
               </div>
               <div className="mb-3 md:mb-0 lg:mb-0 flex flex-col">
@@ -88,11 +89,14 @@ const OrderInvoice = () => {
                   Invoice To.
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 block">
-                  {data.name}
+                  name will be show
+                  {/* {data.name} */}
                   <br />
-                  {data.address.substring(0, 25)}
+                  address will be show
+                  {/* {data.address.substring(0, 25)} */}
                   <br />
-                  {data.city}, {data.country}, {data.zipCode}
+                  city country zipcode will be show
+                  {/* {data.city}, {data.country}, {data.zipCode} */}
                 </span>
               </div>
             </div>
@@ -113,7 +117,7 @@ const OrderInvoice = () => {
                     <TableCell className="text-center">Amount</TableCell>
                   </tr>
                 </TableHeader>
-                <Invoice data={data} />
+                {/* <Invoice data={data} /> */}
               </Table>
             </TableContainer>
           )}
@@ -127,7 +131,8 @@ const OrderInvoice = () => {
                   Payment Method
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-semibold font-serif block">
-                  {data.paymentMethod}
+                  payment method name
+                  {/* {data.paymentMethod} */}
                 </span>
               </div>
               <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">
@@ -135,7 +140,8 @@ const OrderInvoice = () => {
                   Shipping Cost
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-semibold font-serif block">
-                  ${Math.round(data.shippingCost)}.00
+                  100 
+                  {/* ${Math.round(data.shippingCost)}.00 */}
                 </span>
               </div>
               <div className="mb-3 md:mb-0 lg:mb-0  flex flex-col sm:flex-wrap">
@@ -143,7 +149,7 @@ const OrderInvoice = () => {
                   Discount
                 </span>
                 <span className="text-sm text-gray-500 dark:text-gray-400 font-semibold font-serif block">
-                  ${Math.round(data.discount)}.00
+                  {/* ${Math.round(data.discount)}.00 */}
                 </span>
               </div>
               <div className="flex flex-col sm:flex-wrap">
@@ -151,14 +157,15 @@ const OrderInvoice = () => {
                   Total Amount
                 </span>
                 <span className="text-xl font-serif font-bold text-red-500 dark:text-green-500 block">
-                  ${Math.round(data.total)}.00
+                  3334
+                  {/* ${Math.round(data.total)}.00 */}
                 </span>
               </div>
             </div>
           </div>
         )}
       </div>
-      {!loading && (
+      {/* {!loading && (
         <div className="mb-4 mt-3 flex justify-between">
           <PDFDownloadLink
             document={<InvoiceForDownload data={data} />}
@@ -191,7 +198,7 @@ const OrderInvoice = () => {
             documentTitle="Invoice"
           />
         </div>
-      )}
+      )} */}
     </>
   );
 };
