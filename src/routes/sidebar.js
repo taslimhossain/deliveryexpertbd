@@ -123,6 +123,11 @@ const sidebar = [
         path: '/hubs',
         icon: FiGift,
         name: 'Hubs',
+      },
+      {
+        path: '/zoneinhub',
+        icon: FiGift,
+        name: 'Zone in Hub',
       }
     ],
   },

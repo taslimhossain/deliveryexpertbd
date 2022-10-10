@@ -1,11 +1,14 @@
 import { lazy } from 'react';
 import UserRole from '../hooks/UserRole';
 import Areas from '../pages/Areas';
+import Hub from '../pages/Hub';
 import Merchantcost from '../pages/Merchantcost';
 import PickupLocation from '../pages/PickupLocation';
 import ProductType from '../pages/ProductType';
+import Ridercost from '../pages/Ridercost';
 import ServiceType from '../pages/ServiceType';
 import Weight from '../pages/Weight';
+import ZoneinHub from '../pages/ZoneinHub';
 import Zones from '../pages/Zones';
 
 // use lazy for better code splitting
@@ -125,6 +128,21 @@ const routes = [
   {
     path: '/merchantcosts',
     component: Merchantcost,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/ridercosts',
+    component: Ridercost,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/hubs',
+    component: Hub,
+    userRole: UserRole.superAdmin(),
+  },
+  {
+    path: '/zoneinhub',
+    component: ZoneinHub,
     userRole: UserRole.superAdmin(),
   },
   { 

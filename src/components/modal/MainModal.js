@@ -18,6 +18,9 @@ import ProductTypeServices from '../../services/ProductTypeServices';
 import ServiceTypeServices from '../../services/ServiceTypeServices';
 import WeightServices from '../../services/WeightServices';
 import MerchantcostServices from '../../services/MerchantcostServices';
+import RidercostServices from '../../services/RidercostServices';
+import HubServices from '../../services/HubServices';
+import ZoneinHubServices from '../../services/ZoneinHubServices';
 
 const MainModal = ({ id }) => {
   const { isModalOpen, closeModal, setIsUpdate } = useContext(SidebarContext);
@@ -141,7 +144,37 @@ const MainModal = ({ id }) => {
         })
         .catch((err) => notifyError(err.message));
       closeModal();
-    }    
+    }
+
+    if (location.pathname === '/ridercosts') {
+      RidercostServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }
+
+    if (location.pathname === '/hubs') {
+      HubServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }
+
+    if (location.pathname === '/zoneinhub') {
+      ZoneinHubServices.deleteItem(id)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeModal();
+    }
 
     if (location.pathname === '/our-rider') {
       AdminServices.deleteStaff(id)
