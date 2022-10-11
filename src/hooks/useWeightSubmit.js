@@ -20,6 +20,7 @@ const useWeightSubmit = (id) => {
       from: data.from,
       to: data.to,
       inside_amount: data.inside_amount,
+      inside_district: data.inside_district,
       outside_amount: data.outside_amount,
       status: data.itemStatus,
     };
@@ -48,6 +49,7 @@ const useWeightSubmit = (id) => {
       setValue('from');
       setValue('to');
       setValue('inside_amount');
+      setValue('inside_district');
       setValue('outside_amount');
       setValue('itemStatus');
       return;
@@ -59,6 +61,7 @@ const useWeightSubmit = (id) => {
             setValue('from', res.data.from);
             setValue('to', res.data.to);
             setValue('outside_amount', res.data.outside_amount);
+            setValue('inside_district', res.data.inside_district);
             setValue('inside_amount', res.data.inside_amount);
             setValue('itemStatus', res.data.status === true ? 1 : 0);
           }

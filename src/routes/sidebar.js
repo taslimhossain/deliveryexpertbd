@@ -27,13 +27,13 @@ const sidebar = [
     path: '/products',
     icon: FiShoppingBag,
     name: 'Products',
-    userRole: UserRole.superAdmin(),
+    userRole: UserRole.noRole(),
   },
   {
     path: '/category',
     icon: FiList,
     name: 'Category',
-    userRole: UserRole.merchant(),
+    userRole: UserRole.noRole(),
   },
   {
     path: '/new-order',

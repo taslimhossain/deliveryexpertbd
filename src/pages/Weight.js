@@ -82,8 +82,9 @@ const Weight = () => {
                 <TableCell>ID</TableCell>
                 <TableCell>From</TableCell>
                 <TableCell>To</TableCell>
-                <TableCell>Inside city amount</TableCell>
-                <TableCell>Outside</TableCell>
+                <TableCell>Sadar amount</TableCell>
+                <TableCell>Sub area amount</TableCell>
+                <TableCell>Outside amount</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>
               </tr>

@@ -45,6 +45,14 @@ const WeightTable = ({ weights }) => {
               {' '}
               <span className="text-sm font-semibold">
                 {' '}
+                {item.inside_district}
+              </span>{' '}
+            </TableCell>
+
+            <TableCell>
+              {' '}
+              <span className="text-sm font-semibold">
+                {' '}
                 {item.outside_amount}
               </span>{' '}
             </TableCell>

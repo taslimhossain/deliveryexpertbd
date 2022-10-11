@@ -43,7 +43,7 @@ const WeightDrawer = ({ id }) => {
                     type="text"
                     placeholder="From"
                   />
-                  <Error errorName={errors.name} />
+                  <Error errorName={errors.from} />
                 </div>
               </div>
 
@@ -57,12 +57,12 @@ const WeightDrawer = ({ id }) => {
                     type="text"
                     placeholder="To"
                   />
-                  <Error errorName={errors.name} />
+                  <Error errorName={errors.to} />
                 </div>
               </div>
 
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
-                <LabelArea label="Inside Amount" />
+                <LabelArea label="Sadar amount" />
                 <div className="col-span-8 sm:col-span-4">
                   <InputArea
                     register={register}
@@ -76,7 +76,21 @@ const WeightDrawer = ({ id }) => {
               </div>
 
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
-                <LabelArea label="Outside Amount" />
+                <LabelArea label="Sub area amount" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputArea
+                    register={register}
+                    label="0"
+                    name="inside_district"
+                    type="text"
+                    placeholder="0"
+                  />
+                  <Error errorName={errors.inside_district} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Outside amount" />
                 <div className="col-span-8 sm:col-span-4">
                   <InputArea
                     register={register}
