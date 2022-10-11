@@ -9,6 +9,7 @@ import DrawerButton from '../form/DrawerButton';
 import useZoneSubmit from '../../hooks/useZoneSubmit';
 import SelectStatusOption from '../form/SelectStatusOption';
 import SelectDistrictOption from '../form/SelectDistrictOption';
+import InputCheckbox from '../form/InputCheckbox';
 
 
 const ZoneDrawer = ({ id }) => {
@@ -58,6 +59,48 @@ const ZoneDrawer = ({ id }) => {
                     placeholder="Select District"
                   />
                   <Error errorName={errors.zonedistrict} />
+                </div>
+              </div>
+         
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Is it inside city?" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputCheckbox
+                    register={register}
+                    label="Yes"
+                    defaultValue="1"
+                    name="is_insidecity"
+                    required={true}
+                  />
+                  <Error errorName={errors.is_insidecity} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Accept pickup in this zone" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputCheckbox
+                    register={register}
+                    label="Yes"
+                    defaultValue="1"
+                    name="pickup_accept"
+                    required={true}
+                  />
+                  <Error errorName={errors.pickup_accept} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Accept Delivery in this zone" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputCheckbox
+                    register={register}
+                    label="Yes"
+                    defaultValue="1"
+                    name="delivery_accept"
+                    required={true}
+                  />
+                  <Error errorName={errors.delivery_accept} />
                 </div>
               </div>
          

@@ -22,6 +22,8 @@ import { SidebarContext } from '../context/SidebarContext';
 import PageTitle from '../components/Typography/PageTitle';
 import ZoneTable from '../components/zone/ZoneTable';
 import SelectDistrictFilter from '../components/form/SelectDistrictFilter';
+import MainDrawer from '../components/drawer/MainDrawer';
+import ZoneDrawer from '../components/drawer/ZoneDrawer';
 
 const Zones = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -41,6 +43,10 @@ const Zones = () => {
   return (
     <>
       <PageTitle>Zones</PageTitle>
+
+      <MainDrawer>
+        <ZoneDrawer />
+      </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
@@ -81,11 +87,13 @@ const Zones = () => {
                 <TableCell>ID</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>District</TableCell>
+                <TableCell>Inside city</TableCell>
+                <TableCell>Accept Pickup</TableCell>
+                <TableCell>Accept Delivery</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>
               </tr>
             </TableHeader>
-            {/* <CouponTable coupons={dataTable} /> */}
             <ZoneTable zones={dataTable} />
           </Table>
           <TableFooter>

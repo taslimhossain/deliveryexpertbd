@@ -62,16 +62,30 @@ const WeightDrawer = ({ id }) => {
               </div>
 
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
-                <LabelArea label="Amount" />
+                <LabelArea label="Inside Amount" />
                 <div className="col-span-8 sm:col-span-4">
                   <InputArea
                     register={register}
-                    label="Amount"
-                    name="amount"
+                    label="0"
+                    name="inside_amount"
                     type="text"
-                    placeholder="Amount"
+                    placeholder="0"
                   />
-                  <Error errorName={errors.amount} />
+                  <Error errorName={errors.inside_amount} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Outside Amount" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputArea
+                    register={register}
+                    label="0"
+                    name="outside_amount"
+                    type="text"
+                    placeholder="0"
+                  />
+                  <Error errorName={errors.outside_amount} />
                 </div>
               </div>
          

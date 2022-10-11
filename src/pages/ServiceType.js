@@ -23,6 +23,7 @@ import MainDrawer from '../components/drawer/MainDrawer';
 import CouponDrawer from '../components/drawer/CouponDrawer';
 import ServiceTypeServices from '../services/ServiceTypeServices';
 import ServiceTypeTable from '../components/servicetype/ServiceTypeTable';
+import ServiceTypeDrawer from '../components/drawer/ServiceTypeDrawer';
 
 const ServiceType = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -42,7 +43,7 @@ const ServiceType = () => {
       <PageTitle>Service types</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <ServiceTypeDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">

@@ -19,7 +19,8 @@ const useWeightSubmit = (id) => {
     const ItemData = {
       from: data.from,
       to: data.to,
-      amount: data.amount,
+      inside_amount: data.inside_amount,
+      outside_amount: data.outside_amount,
       status: data.itemStatus,
     };
 
@@ -46,7 +47,8 @@ const useWeightSubmit = (id) => {
     if (!isDrawerOpen) {
       setValue('from');
       setValue('to');
-      setValue('amount');
+      setValue('inside_amount');
+      setValue('outside_amount');
       setValue('itemStatus');
       return;
     }
@@ -56,7 +58,8 @@ const useWeightSubmit = (id) => {
           if (res && res.status === 'success') {
             setValue('from', res.data.from);
             setValue('to', res.data.to);
-            setValue('amount', res.data.amount);
+            setValue('outside_amount', res.data.outside_amount);
+            setValue('inside_amount', res.data.inside_amount);
             setValue('itemStatus', res.data.status === true ? 1 : 0);
           }
         })

@@ -35,6 +35,32 @@ const ZoneTable = ({ zones }) => {
                 {zone.district_name}
               </span>{' '}
             </TableCell>
+            
+            <TableCell className="align-middle ">
+              { zone.is_insidecity == 1 ? (
+                <Badge type="success">Yes</Badge>
+              ) : (
+                <Badge type="danger">No</Badge>
+              )}
+            </TableCell>
+
+            <TableCell className="align-middle ">
+              { console.log('zone.pickup_accept', zone.pickup_accept) }
+              { zone.pickup_accept == 1 ? (
+                <Badge type="success">Yes</Badge>
+              ) : (
+                <Badge type="danger">No</Badge>
+              )}
+            </TableCell>
+
+            <TableCell className="align-middle ">
+              { zone.delivery_accept == 1 ? (
+                <Badge type="success">Yes</Badge>
+              ) : (
+                <Badge type="danger">No</Badge>
+              )}
+            </TableCell>
+            
             <TableCell className="align-middle ">
               { zone.status === false ? (
                 <Badge type="danger">InActive</Badge>
@@ -42,6 +68,7 @@ const ZoneTable = ({ zones }) => {
                 <Badge type="success">Active</Badge>
               )}
             </TableCell>
+
             <TableCell>
               <EditDeleteButton
                 id={zone.id}

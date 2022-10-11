@@ -23,6 +23,7 @@ import MainDrawer from '../components/drawer/MainDrawer';
 import CouponDrawer from '../components/drawer/CouponDrawer';
 import ZoneinHubServices from '../services/ZoneinHubServices';
 import HubinZoneTable from '../components/hubinzone/HubinZoneTable';
+import ZoneinHubDrawer from '../components/drawer/ZoneinHubDrawer';
 
 const ZoneinHub = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -42,7 +43,7 @@ const ZoneinHub = () => {
       <PageTitle>Zone in Hub</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <ZoneinHubDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">

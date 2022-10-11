@@ -14,7 +14,7 @@ const SelectPickupOption = ({ register, name, label}) => {
           required: `${label} is required!`,
         })}
       >
-        <option value="" defaultValue hidden>Select Pickup location</option>
+
         {data?.pickuplocation?.map((item, i) => (
           <option key={item.id} value={item.id}>{item.name}</option>
         ))}

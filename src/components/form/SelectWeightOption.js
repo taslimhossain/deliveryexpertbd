@@ -14,7 +14,6 @@ const SelectWeightOption = ({ register, name, label}) => {
           required: `${label} is required!`,
         })}
       >
-        <option value="" defaultValue hidden>Select Weight</option>
         {data?.weight?.map((item, i) => (
           <option key={item.id} value={item.id}>{item.name}</option>
         ))}

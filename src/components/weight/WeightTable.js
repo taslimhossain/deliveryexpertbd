@@ -37,7 +37,7 @@ const WeightTable = ({ weights }) => {
               {' '}
               <span className="text-sm font-semibold">
                 {' '}
-                {item.amount}
+                {item.inside_amount}
               </span>{' '}
             </TableCell>
 
@@ -45,7 +45,7 @@ const WeightTable = ({ weights }) => {
               {' '}
               <span className="text-sm font-semibold">
                 {' '}
-                00
+                {item.outside_amount}
               </span>{' '}
             </TableCell>
 

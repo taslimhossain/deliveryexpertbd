@@ -21,6 +21,8 @@ import { SidebarContext } from '../context/SidebarContext';
 import PageTitle from '../components/Typography/PageTitle';
 import AreaServices from '../services/AreaServices';
 import AreaTable from '../components/area/AreaTable';
+import MainDrawer from '../components/drawer/MainDrawer';
+import AreaDrawer from '../components/drawer/AreaDrawer';
 
 
 const Areas = () => {
@@ -40,6 +42,10 @@ const Areas = () => {
   return (
     <>
       <PageTitle>Area</PageTitle>
+
+      <MainDrawer>
+        <AreaDrawer />
+      </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>

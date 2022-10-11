@@ -30,12 +30,28 @@ const DistrictTable = ({ districts }) => {
               {' '}
               <span className="text-sm"> {district.name}</span>{' '}
             </TableCell>
+
             <TableCell>
               {' '}
               <span className="text-sm font-semibold">
-                {Math.round(district.cost)}.00 ৳
+                {Math.round(district.insidecity)}.00 ৳
               </span>{' '}
             </TableCell>
+
+            <TableCell>
+              {' '}
+              <span className="text-sm font-semibold">
+                {Math.round(district.samedistrict)}.00 ৳
+              </span>{' '}
+            </TableCell>
+
+            <TableCell>
+              {' '}
+              <span className="text-sm font-semibold">
+                {Math.round(district.outside)}.00 ৳
+              </span>{' '}
+            </TableCell>
+
             <TableCell className="align-middle ">
               { district.status === false ? (
                 <Badge type="danger">InActive</Badge>

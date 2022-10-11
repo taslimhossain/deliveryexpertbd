@@ -23,6 +23,7 @@ import MainDrawer from '../components/drawer/MainDrawer';
 import CouponDrawer from '../components/drawer/CouponDrawer';
 import HubServices from '../services/HubServices';
 import HubTable from '../components/hub/HubTable';
+import HubDrawer from '../components/drawer/HubDrawer';
 
 const Hub = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -42,7 +43,7 @@ const Hub = () => {
       <PageTitle>Hubs</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <HubDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">

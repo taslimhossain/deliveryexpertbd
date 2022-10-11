@@ -23,6 +23,7 @@ import MainDrawer from '../components/drawer/MainDrawer';
 import CouponDrawer from '../components/drawer/CouponDrawer';
 import PickupLocationTable from '../components/pickuplocation/PickupLocationTable';
 import PickupLocationServices from '../services/PickupLocationServices';
+import PickupLocationDrawer from '../components/drawer/PickupLocationDrawer';
 
 const PickupLocation = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -39,10 +40,10 @@ const PickupLocation = () => {
 
   return (
     <>
-      <PageTitle>Pickup locations</PageTitle>
+      <PageTitle>Stores</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <PickupLocationDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
@@ -64,7 +65,7 @@ const PickupLocation = () => {
                 <span className="mr-3">
                   <FiPlus />
                 </span>
-                Add Pickup location
+                Add Store
               </Button>
             </div>
           </form>

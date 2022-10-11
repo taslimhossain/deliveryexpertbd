@@ -75,7 +75,7 @@ const sidebar = [
   {
     path: '/pickup-location',
     icon: FiGift,
-    name: 'Pickup Location',
+    name: 'Stores',
     userRole: UserRole.merchant(),
   },
 

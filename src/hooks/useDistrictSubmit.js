@@ -18,7 +18,9 @@ const useDistrictSubmit = (id) => {
     console.log('datadatadata', data)
     const CouponData = {
       name: data.districtName,
-      price: data.districtCost,
+      insidecity: data.insidecity,
+      samedistrict: data.samedistrict,
+      outside: data.outside,
       status: data.districtStatus,
     };
 
@@ -44,7 +46,9 @@ const useDistrictSubmit = (id) => {
   useEffect(() => {
     if (!isDrawerOpen) {
       setValue('districtName');
-      setValue('districtCost');
+      setValue('insidecity');
+      setValue('samedistrict');
+      setValue('outside');
       setValue('districtStatus');
       return;
     }
@@ -53,7 +57,9 @@ const useDistrictSubmit = (id) => {
         .then((res) => {
           if (res && res.status === 'success') {
             setValue('districtName', res.data.name);
-            setValue('districtCost', res.data.cost);
+            setValue('insidecity', res.data.insidecity);
+            setValue('samedistrict', res.data.samedistrict);
+            setValue('outside', res.data.outside);
             setValue('districtStatus', res.data.status === true ? 1 : 0);
           }
         })

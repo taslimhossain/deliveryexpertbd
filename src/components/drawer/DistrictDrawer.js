@@ -48,18 +48,47 @@ const DistrictDrawer = ({ id }) => {
               </div>
 
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
-                <LabelArea label="Cost" />
+                <LabelArea label="Inside City" />
                 <div className="col-span-8 sm:col-span-4">
                   <InputValue
                     register={register}
-                    label="cost"
-                    name="districtCost"
+                    label="0"
+                    name="insidecity"
                     type="number"
-                    placeholder="Cost"
+                    placeholder="0"
                   />
-                  <Error errorName={errors.districtCost} />
+                  <Error errorName={errors.insidecity} />
                 </div>
               </div>
+
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Same District" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputValue
+                    register={register}
+                    label="0"
+                    name="samedistrict"
+                    type="number"
+                    placeholder="0"
+                  />
+                  <Error errorName={errors.samedistrict} />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
+                <LabelArea label="Outside" />
+                <div className="col-span-8 sm:col-span-4">
+                  <InputValue
+                    register={register}
+                    label="0"
+                    name="outside"
+                    type="number"
+                    placeholder="0"
+                  />
+                  <Error errorName={errors.outside} />
+                </div>
+              </div>
+
          
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
                 <LabelArea label="Status" />

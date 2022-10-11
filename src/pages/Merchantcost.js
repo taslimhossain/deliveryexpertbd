@@ -23,6 +23,7 @@ import MainDrawer from '../components/drawer/MainDrawer';
 import CouponDrawer from '../components/drawer/CouponDrawer';
 import MerchantcostServices from '../services/MerchantcostServices';
 import MerchantcostTable from '../components/merchantcost/MerchantcostTable';
+import MerchantcostDrawer from '../components/drawer/MerchantcostDrawer';
 
 const Merchantcost = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -42,7 +43,7 @@ const Merchantcost = () => {
       <PageTitle>Merchant fee category</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <MerchantcostDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">

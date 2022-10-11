@@ -20,7 +20,7 @@ import Loading from '../components/preloader/Loading';
 import { SidebarContext } from '../context/SidebarContext';
 import PageTitle from '../components/Typography/PageTitle';
 import MainDrawer from '../components/drawer/MainDrawer';
-import CouponDrawer from '../components/drawer/CouponDrawer';
+import RidercostDrawer from '../components/drawer/RidercostDrawer';
 import RidercostServices from '../services/RidercostServices';
 import RidercostTable from '../components/ridercost/RidercostTable';
 
@@ -42,7 +42,7 @@ const Ridercost = () => {
       <PageTitle>Rider fee category</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <RidercostDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">

@@ -23,6 +23,7 @@ import MainDrawer from '../components/drawer/MainDrawer';
 import CouponDrawer from '../components/drawer/CouponDrawer';
 import WeightServices from '../services/WeightServices';
 import WeightTable from '../components/weight/WeightTable';
+import WeightDrawer from '../components/drawer/WeightDrawer';
 
 const Weight = () => {
   const { toggleDrawer } = useContext(SidebarContext);
@@ -42,7 +43,7 @@ const Weight = () => {
       <PageTitle>Weight</PageTitle>
 
       <MainDrawer>
-        <CouponDrawer />
+        <WeightDrawer />
       </MainDrawer>
 
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">

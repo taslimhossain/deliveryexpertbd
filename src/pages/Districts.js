@@ -22,6 +22,8 @@ import { SidebarContext } from '../context/SidebarContext';
 //import CouponTable from '../components/coupon/CouponTable';
 import DistrictTable from '../components/district/DistrictTable';
 import PageTitle from '../components/Typography/PageTitle';
+import DistrictDrawer from '../components/drawer/DistrictDrawer';
+import MainDrawer from '../components/drawer/MainDrawer';
 
 
 const Districts = () => {
@@ -41,6 +43,11 @@ const Districts = () => {
   return (
     <>
       <PageTitle>Districts</PageTitle>
+
+      <MainDrawer>
+        <DistrictDrawer />
+      </MainDrawer>
+
       <Card className="min-w-0 shadow-xs overflow-hidden bg-white dark:bg-gray-800 mb-5">
         <CardBody>
           <form
@@ -76,7 +83,9 @@ const Districts = () => {
               <tr>
                 <TableCell>ID</TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>Cost</TableCell>
+                <TableCell>Inside City</TableCell>
+                <TableCell>Same District</TableCell>
+                <TableCell>Outside</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>
               </tr>
