@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { Button } from '@windmill/react-ui';
+import React, { useContext, useState } from 'react';
+import { Button, Select } from '@windmill/react-ui';
 
 import Error from '../components/form/Error';
 import LabelArea from '../components/form/LabelArea';
@@ -17,14 +17,51 @@ import SelectWeightOption from '../components/form/SelectWeightOption';
 import SelectServiceOption from '../components/form/SelectServiceOption';
 import useOrderSubmit from '../hooks/useOrderSubmit';
 import InputTextArea from '../components/form/InputTextArea';
+import OrderServices from '../services/OrderServices';
+import useAsync from '../hooks/useAsync';
+import ParentCategory from '../components/category/ParentCategory';
+import StoreOptions from '../components/optionsdata/StoreOptions';
+import ProductTypeOptions from '../components/optionsdata/ProductTypeOptions';
+import ServiceOptions from '../components/optionsdata/ServiceOptions';
+import WeightOptions from '../components/optionsdata/DistrictOptions';
+import DistrictOptions from '../components/optionsdata/DistrictOptions';
+import ZoneOptions from '../components/optionsdata/ZoneOptions';
+import AreaOptions from '../components/optionsdata/AreaOptions';
+import { notifyError } from '../utils/toast';
 
 const CreateOrder = () => {
+  const [orderCost, setorderCost] = useState({});
+  const [getCost, setGetCost] = useState({});
+  
+  const handleOrderCalculate = (e) => {
+
+    const field = e.target.name;
+    const value = e.target.value;
+    const newOrderCost = { ...orderCost }
+    newOrderCost[field] = value;
+    setorderCost(newOrderCost);
+
+    const ItemData = {
+      store_id: newOrderCost.store_id,
+      district_id: newOrderCost.district_id,
+      product_typeid: newOrderCost.product_typeid,
+      service_id: newOrderCost.service_id,
+      weight_id: newOrderCost.weight_id,
+      zone_id: newOrderCost.zone_id
+    };
+    OrderServices.getOrderCost(ItemData)
+    .then((res) => {
+      setGetCost(res.data)
+    })
+    .catch((err) => notifyError(err.message));
+  };
+
+
   const {
     state: { adminInfo },
   } = useContext(AdminContext);
 
-  const { register, handleSubmit, onSubmit, errors, imageUrl, setImageUrl } =
-  useOrderSubmit(adminInfo._id);
+  const { register, handleSubmit, onSubmit, errors, imageUrl, setImageUrl } = useOrderSubmit(adminInfo._id);
 
   return (
     <>
@@ -39,23 +76,30 @@ const CreateOrder = () => {
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                   <div className="md:col-span-1">
                       <LabelArea label="Store" />
-                      <SelectPickupOption
-                        register={register}
-                        label="Select Store"
-                        name="store_id"
-                        placeholder="Select Store"
-                      />
-                      <Error errorName={errors.store_id} />
+                      <Select
+                      className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
+                      name="store_id"
+                      {...register('store_id', {
+                        onChange: (e) => { handleOrderCalculate(e) },
+                        required: 'Store is required!',
+                      })} >
+                        <option value="All" defaultValue hidden></option>
+                      <StoreOptions />
+                    </Select>
+                    <Error errorName={errors.store_id} />
                   </div>
                   <div className="md:col-span-1">
                       <LabelArea label="Product Type" />
-                      <SelectProductOption
-                        register={register}
-                        label="Select Product type"
-                        name="product_typeid"
-                        placeholder="Select Product type"
-                      />
-                      <Error errorName={errors.product_typeid} />
+                      <Select
+                      className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
+                      name="product_typeid"
+                      {...register('product_typeid', {
+                        onChange: (e) => { handleOrderCalculate(e) },
+                        required: 'Store is required!',
+                      })} >
+                        <option value="All" defaultValue hidden></option>
+                      <ProductTypeOptions />
+                    </Select>
                   </div>
                   <div className="md:col-span-1">
                       <LabelArea label="Merchant Order ID" />
@@ -98,34 +142,44 @@ const CreateOrder = () => {
                     <div className="md:grid md:grid-cols-2 md:gap-6">
                         <div className="md:col-span-1">
                           <LabelArea label="District" />
-                          <SelectDistrictOption
-                            register={register}
-                            label="Select District"
+
+
+                          <Select className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
                             name="district_id"
-                            placeholder="Select District"
-                          />
-                          <Error errorName={errors.district_id} />
+                            {...register('district_id', {
+                              onChange: (e) => { handleOrderCalculate(e) },
+                              required: 'Select District',
+                            })} >
+                              <option value="All" defaultValue hidden></option>
+                            <DistrictOptions />
+                          </Select>
                         </div>
                         <div className="md:col-span-1">
                           <LabelArea label="Zone" />
-                          <SelectZoneOption
-                            register={register}
-                            label="Select Zone"
+                          <Select className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
                             name="zone_id"
-                            placeholder="Select Zone"
-                          />
+                            {...register('zone_id', {
+                              onChange: (e) => { handleOrderCalculate(e) },
+                              required: 'Select Zone',
+                            })} >
+                              <option value="All" defaultValue hidden></option>
+                            <ZoneOptions />
+                          </Select>
                           <Error errorName={errors.zone_id} />
                         </div>
                     </div>
                     <span className='block mb-5'></span>
 
                       <LabelArea label="Select Area" />
-                      <SelectAreaOption
-                        register={register}
-                        label="Select Area"
-                        name="area_id"
-                        placeholder="Select Area"
-                      />
+                      <Select className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
+                            name="area_id"
+                            {...register('area_id', {
+                              onChange: (e) => { handleOrderCalculate(e) },
+                              required: 'Select area',
+                            })} >
+                            <option value="All" defaultValue hidden></option>
+                            <AreaOptions />
+                      </Select>
                       <Error errorName={errors.area_id} />
                       <span className='block mb-5'></span>
 
@@ -142,24 +196,36 @@ const CreateOrder = () => {
                   </div>
                   <div className="md:col-span-1">
                     <h3 className='my-6 text-lg font-bold text-gray-700 dark:text-gray-300'>Delivery Details</h3>
-                      <LabelArea label="Delivery Type" />
-                      <SelectServiceOption
-                        register={register}
-                        label="Delivery Type"
-                        name="service_id"
-                        placeholder="Delivery Type"
-                      />
-                      <Error errorName={errors.service_id} />
-                      <span className='block mb-5'></span>
 
-                      <LabelArea label="Total Weight" />
-                      <SelectWeightOption
-                        register={register}
-                        label=""
-                        name="weight_id"
-                        placeholder=""
-                      />
-                      <Error errorName={errors.weight_id} />
+                    <LabelArea label="Delivery Type" />
+                      <Select
+                      className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
+                      name="service_id"
+                      {...register('service_id', {
+                        onChange: (e) => { handleOrderCalculate(e) },
+                        required: 'Store is required!',
+                      })} >
+                        <option value="All" defaultValue hidden></option>
+                      <ServiceOptions />
+                    </Select>
+                    <Error errorName={errors.service_id} />
+
+                    <span className='block mb-5'></span>
+
+
+                    <LabelArea label="Total Weight" />
+                      <Select
+                      className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
+                      name="weight_id"
+                      {...register('weight_id', {
+                        onChange: (e) => { handleOrderCalculate(e) },
+                        required: 'Wight is required!',
+                      })} >
+                        <option value="All" defaultValue hidden></option>
+                      <WeightOptions />
+                    </Select>
+                    <Error errorName={errors.weight_id} />
+
                       <span className='block mb-5'></span>
 
                       <LabelArea label="Amount to Collect" />
@@ -175,16 +241,16 @@ const CreateOrder = () => {
                       <div className="px-4 sm:px-0">
                         <h3 className="my-6 text-lg font-bold text-gray-700 dark:text-gray-300">Cost Of Delivery</h3>
                           <div className="delivery-cost-row flex flex-1 mb-1">
-                            <div class="flex-1">Delivery Fee</div>
-                            <div className="w-16 text-right">৳285</div>
+                            <div className="flex-1">Delivery Fee</div>
+                            <div className="w-16 text-right">৳{getCost.delivery_fee}</div>
                           </div>
                           <div className="delivery-cost-row flex flex-1 mb-1">
-                            <div class="flex-1">Discount</div>
-                            <div className="w-16 text-right text-red-600">-৳25</div>
+                            <div className="flex-1">Discount</div>
+                            <div className="w-16 text-right text-red-600">-৳0</div>
                           </div>
                           <div className="delivery-cost-row flex flex-1 mb-1">
-                            <div class="flex-1">Additional Charge</div>
-                            <div className="w-16 text-right">৳25</div>
+                            <div className="flex-1">Additional Charge</div>
+                            <div className="w-16 text-right">৳{getCost.additional_charge}</div>
                           </div>
                           <div className="border border-black flex"></div>
                           <div className="delivery-cost-row total flex flex-1 font-bold text-gray-700 dark:text-gray-300">

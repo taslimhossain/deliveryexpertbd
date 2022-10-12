@@ -20,6 +20,12 @@ const OrderServices = {
   deleteOrder(id) {
     return requests.delete(`/orders/${id}`);
   },
+
+  getOrderCost(body) {
+    return requests.post('/price-plan', body);
+  },
+
+
 };
 
 export default OrderServices;
