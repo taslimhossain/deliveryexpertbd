@@ -88,8 +88,6 @@ const Zones = () => {
                 <TableCell>Name</TableCell>
                 <TableCell>District</TableCell>
                 <TableCell>Inside city</TableCell>
-                <TableCell>Accept Pickup</TableCell>
-                <TableCell>Accept Delivery</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>
               </tr>

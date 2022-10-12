@@ -83,6 +83,8 @@ const Areas = () => {
                 <TableCell>ID</TableCell>
                 <TableCell>Name</TableCell>
                 <TableCell>Zone</TableCell>
+                <TableCell>Accept Pickup</TableCell>
+                <TableCell>Accept Delivery</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>
               </tr>

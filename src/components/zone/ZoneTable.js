@@ -43,23 +43,6 @@ const ZoneTable = ({ zones }) => {
                 <Badge type="danger">No</Badge>
               )}
             </TableCell>
-
-            <TableCell className="align-middle ">
-              { console.log('zone.pickup_accept', zone.pickup_accept) }
-              { zone.pickup_accept == 1 ? (
-                <Badge type="success">Yes</Badge>
-              ) : (
-                <Badge type="danger">No</Badge>
-              )}
-            </TableCell>
-
-            <TableCell className="align-middle ">
-              { zone.delivery_accept == 1 ? (
-                <Badge type="success">Yes</Badge>
-              ) : (
-                <Badge type="danger">No</Badge>
-              )}
-            </TableCell>
             
             <TableCell className="align-middle ">
               { zone.status === false ? (

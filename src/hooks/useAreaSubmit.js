@@ -18,6 +18,8 @@ const useAreaSubmit = (id) => {
     const ItemData = {
       name: data.areaName,
       zone_id: data.areaZone,
+      pickup_accept: data.pickup_accept ? '1' : '0',
+      delivery_accept: data.delivery_accept ? '1' : '0',
       status: data.itemStatus,
     };
 
@@ -44,6 +46,8 @@ const useAreaSubmit = (id) => {
     if (!isDrawerOpen) {
       setValue('areaName');
       setValue('areaZone');
+      setValue('pickup_accept');
+      setValue('delivery_accept');
       setValue('itemStatus');
       return;
     }
@@ -53,6 +57,8 @@ const useAreaSubmit = (id) => {
           if (res && res.status === 'success') {
             setValue('areaName', res.data.name);
             setValue('areaZone', res.data.zone_id);
+            setValue('is_insidecity', res.data.is_insidecity == 1 ? 1 : 0);
+            setValue('pickup_accept', res.data.pickup_accept == 1 ? 1 : 0);
             setValue('itemStatus', res.data.status === true ? 1 : 0);
           }
         })

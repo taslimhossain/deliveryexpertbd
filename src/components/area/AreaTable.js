@@ -38,6 +38,23 @@ const AreaTable = ({ tdata }) => {
                 {item.zone_name}
               </span>
             </TableCell>
+
+            <TableCell className="align-middle ">
+              { item.pickup_accept == 1 ? (
+                <Badge type="success">Yes</Badge>
+              ) : (
+                <Badge type="danger">No</Badge>
+              )}
+            </TableCell>
+
+            <TableCell className="align-middle ">
+              { item.delivery_accept == 1 ? (
+                <Badge type="success">Yes</Badge>
+              ) : (
+                <Badge type="danger">No</Badge>
+              )}
+            </TableCell>
+
             <TableCell className="align-middle ">
               { item.status === false ? (
                 <Badge type="danger">InActive</Badge>
