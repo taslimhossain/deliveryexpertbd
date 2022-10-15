@@ -81,8 +81,6 @@ const Merchantcost = () => {
               <tr>
                 <TableCell>ID</TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>Pickup amount</TableCell>
-                <TableCell>Delivery amount</TableCell>
                 <TableCell>Discount amount</TableCell>
                 <TableCell>Status</TableCell>
                 <TableCell className="text-right">Actions</TableCell>

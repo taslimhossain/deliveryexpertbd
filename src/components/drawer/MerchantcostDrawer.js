@@ -47,34 +47,6 @@ const MerchantcostDrawer = ({ id }) => {
                 </div>
               </div>
 
-            <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
-                <LabelArea label="Pickup amount" />
-                <div className="col-span-8 sm:col-span-4">
-                  <InputArea
-                    register={register}
-                    label="Pickup amount"
-                    name="pickup_amount"
-                    type="text"
-                    placeholder="Pickup amount"
-                  />
-                  <Error errorName={errors.pickup_amount} />
-                </div>
-              </div>
-
-            <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
-                <LabelArea label="Delivery amount" />
-                <div className="col-span-8 sm:col-span-4">
-                  <InputArea
-                    register={register}
-                    label="Delivery amount"
-                    name="delivery_amount"
-                    type="text"
-                    placeholder="Delivery amount"
-                  />
-                  <Error errorName={errors.delivery_amount} />
-                </div>
-              </div>
-
               <div className="grid grid-cols-6 gap-3 md:gap-5 xl:gap-6 lg:gap-6 mb-6">
                 <LabelArea label="Discount Amount" />
                 <div className="col-span-8 sm:col-span-4">

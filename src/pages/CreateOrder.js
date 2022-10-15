@@ -23,15 +23,18 @@ import ParentCategory from '../components/category/ParentCategory';
 import StoreOptions from '../components/optionsdata/StoreOptions';
 import ProductTypeOptions from '../components/optionsdata/ProductTypeOptions';
 import ServiceOptions from '../components/optionsdata/ServiceOptions';
-import WeightOptions from '../components/optionsdata/DistrictOptions';
 import DistrictOptions from '../components/optionsdata/DistrictOptions';
 import ZoneOptions from '../components/optionsdata/ZoneOptions';
 import AreaOptions from '../components/optionsdata/AreaOptions';
 import { notifyError } from '../utils/toast';
+import WeightOptions from '../components/optionsdata/WeightOptions';
 
 const CreateOrder = () => {
   const [orderCost, setorderCost] = useState({});
-  const [getCost, setGetCost] = useState({});
+  const [getCost, setGetCost] = useState({
+    delivery_fee : 0,
+    additional_charge : 0
+  });
   
   const handleOrderCalculate = (e) => {
 
@@ -73,6 +76,21 @@ const CreateOrder = () => {
           <div className="mt-5 md:col-span-3 md:mt-0 bg-white dark:bg-gray-800">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="p-6 flex-grow scrollbar-hide w-full max-h-full">
+                <div className="md:grid md:grid-cols-1">
+                    <LabelArea label="Merchant" />
+                      <Select
+                      className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
+                      name="merchant_id"
+                      {...register('merchant_id', {
+                        onChange: (e) => { handleOrderCalculate(e) },
+                        required: 'Merchant is required!',
+                      })} >
+                        <option value="All" defaultValue hidden></option>
+                      <StoreOptions />
+                    </Select>
+                    <Error errorName={errors.merchant_id} />
+                </div>
+                <span className='block mb-5'></span>
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                   <div className="md:col-span-1">
                       <LabelArea label="Store" />
@@ -258,7 +276,6 @@ const CreateOrder = () => {
                             <div className="w-40 text-right">৳260</div>
                           </div>
                       </div>
-
                   </div>
                 </div>
 

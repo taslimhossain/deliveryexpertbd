@@ -17,11 +17,12 @@ import NotFound from '../components/table/NotFound';
 import UserServices from '../services/UserServices';
 import Loading from '../components/preloader/Loading';
 import PageTitle from '../components/Typography/PageTitle';
-import CustomerTable from '../components/customer/CustomerTable';
+import MerchantTable from '../components/merchant/MerchantTable';
+
 
 const Merchants = () => {
-  const { data, loading } = useAsync(UserServices.getAllMerchants);
-
+  const { data, loading } = useAsync(UserServices.getMerchants);
+  console.log('datadatadata', data);
   const {
     userRef,
     handleChangePage,
@@ -73,7 +74,7 @@ const Merchants = () => {
                 <TableCell className="text-right">Actions</TableCell>
               </tr>
             </TableHeader>
-            <CustomerTable customers={dataTable} />
+            <MerchantTable customers={dataTable} />
           </Table>
           <TableFooter>
             <Pagination

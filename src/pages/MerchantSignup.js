@@ -42,7 +42,7 @@ const MerchantSignup = () => {
                   label="Name"
                   name="name"
                   type="text"
-                  placeholder="Admin"
+                  placeholder=""
                 />
                 <Error errorName={errors.name} />
                 

@@ -32,16 +32,6 @@ const MerchantcostTable = ({ merchantcosts }) => {
 
             <TableCell>
               {' '}
-              <span className="text-sm"> {item.pickup_amount} </span>{' '}
-            </TableCell>
-
-            <TableCell>
-              {' '}
-              <span className="text-sm"> {item.delivery_amount} </span>{' '}
-            </TableCell>
-
-            <TableCell>
-              {' '}
               <span className="text-sm"> {item.discount_amount} </span>{' '}
             </TableCell>
 

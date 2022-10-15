@@ -18,8 +18,6 @@ const useMerchantcostSubmit = (id) => {
   const onSubmit = (data) => {
     const ItemData = {
       name: data.name,
-      pickup_amount: data.pickup_amount,
-      delivery_amount: data.delivery_amount,
       discount_amount: data.discount_amount,
       status: data.itemStatus,
     };
@@ -46,8 +44,6 @@ const useMerchantcostSubmit = (id) => {
   useEffect(() => {
     if (!isDrawerOpen) {
       setValue('name');
-      setValue('pickup_amount');
-      setValue('delivery_amount');
       setValue('discount_amount');
       setValue('itemStatus');
       return;
@@ -57,8 +53,6 @@ const useMerchantcostSubmit = (id) => {
         .then((res) => {
           if (res && res.status === 'success') {
             setValue('name', res.data.name);
-            setValue('pickup_amount', res.data.pickup_amount);
-            setValue('delivery_amount', res.data.delivery_amount);
             setValue('discount_amount', res.data.discount_amount);
             setValue('itemStatus', res.data.status === true ? 1 : 0);
           }

@@ -14,6 +14,11 @@ const UserServices = {
   deleteUser(id) {
     return requests.delete(`/user/${id}`);
   },
+
+  getMerchants(body) {
+    return requests.get(`/admin/merchant`, body);
+  },
+
 };
 
 export default UserServices;

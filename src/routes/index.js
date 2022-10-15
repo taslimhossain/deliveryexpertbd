@@ -44,12 +44,12 @@ const routes = [
   {
     path: '/dashboard',
     component: Dashboard,
-    userRole: UserRole.superAdmin(),
+    userRole: UserRole.noRole(),
   },
   {
     path: '/products',
     component: Products,
-    userRole: UserRole.superAdmin(),
+    userRole: UserRole.noRole(),
   },
   {
     path: '/product/:id',
@@ -74,17 +74,17 @@ const routes = [
   {
     path: '/our-rider',
     component: Rider,
-    userRole: UserRole.rider(),
+    userRole: UserRole.superAdmin(),
   },
   {
     path: '/orders',
     component: Orders,
-    userRole: UserRole.manager(),
+    userRole: UserRole.merchant(),
   },
   {
     path: '/order/:id',
     component: OrderInvoice,
-    userRole: UserRole.rider(),
+    userRole: UserRole.merchant(),
   },
   {
     path: '/new-order',
@@ -94,7 +94,7 @@ const routes = [
   {
     path: '/coupons',
     component: Coupons,
-    userRole: UserRole.rider(),
+    userRole: UserRole.noRole(),
   },
   {
     path: '/pickup-location',

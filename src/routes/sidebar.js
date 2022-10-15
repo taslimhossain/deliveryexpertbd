@@ -21,7 +21,7 @@ const sidebar = [
     path: '/dashboard', // the url
     icon: FiGrid, // icon
     name: 'Dashboard', // name that appear in Sidebar
-    userRole: UserRole.superAdmin(),
+    userRole: UserRole.noRole(),
   },
   {
     path: '/products',
@@ -45,7 +45,7 @@ const sidebar = [
     path: '/orders',
     icon: FiCompass,
     name: 'Orders',
-    userRole: UserRole.manager(),
+    userRole: UserRole.merchant(),
   },
   {
     icon: FiSettings,
@@ -69,7 +69,7 @@ const sidebar = [
     path: '/coupons',
     icon: FiGift,
     name: 'Coupons',
-    userRole: UserRole.rider(),
+    userRole: UserRole.noRole(),
   },
 
   {
@@ -140,13 +140,13 @@ const sidebar = [
     path: '/merchants',
     icon: FiUsers,
     name: 'Merchants',
-    userRole: UserRole.merchant(),
+    userRole: UserRole.superAdmin(),
   },
   {
     path: '/our-rider',
     icon: FiUser,
     name: 'Our Rider',
-    userRole: UserRole.rider(),
+    userRole: UserRole.superAdmin(),
   },
   {
     path: '/setting',
