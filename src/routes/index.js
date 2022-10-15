@@ -164,7 +164,7 @@ const routes = [
   {
     path: '/edit-profile',
     component: EditProfile,
-    userRole: UserRole.rider(),
+    userRole: UserRole.merchant(),
   },
 ];
 

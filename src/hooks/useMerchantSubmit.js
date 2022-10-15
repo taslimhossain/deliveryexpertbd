@@ -1,0 +1,73 @@
+import { useContext, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { SidebarContext } from '../context/SidebarContext';
+import MerchantServices from '../services/MerchantServices';
+
+import { notifyError, notifySuccess } from '../utils/toast';
+
+const useMerchantSubmit = (id) => {
+  const { isDrawerOpen, closeDrawer, setIsUpdate } = useContext(SidebarContext);
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const ItemData = {
+      name: data.name,
+      discount_amount: data.discount_amount,
+      status: data.itemStatus,
+    };
+
+    if (id) {
+      MerchantServices.updateItem(id, ItemData)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeDrawer();
+    } else {
+      MerchantServices.addItem(ItemData)
+        .then((res) => {
+          setIsUpdate(true);
+          notifySuccess(res.message);
+        })
+        .catch((err) => notifyError(err.message));
+      closeDrawer();
+    }
+  };
+
+  useEffect(() => {
+    if (!isDrawerOpen) {
+      setValue('name');
+      setValue('discount_amount');
+      setValue('itemStatus');
+      return;
+    }
+    if (id) {
+      MerchantServices.getItemById(id)
+        .then((res) => {
+          if (res && res.status === 'success') {
+            setValue('name', res.data.name);
+            setValue('discount_amount', res.data.discount_amount);
+            setValue('itemStatus', res.data.status === true ? 1 : 0);
+          }
+        })
+        .catch((err) => {
+          notifyError('There is a server error!');
+        });
+    }
+  }, [id, setValue, isDrawerOpen]);
+  return {
+    register,
+    handleSubmit,
+    onSubmit,
+    errors
+  };
+};
+
+export default useMerchantSubmit;

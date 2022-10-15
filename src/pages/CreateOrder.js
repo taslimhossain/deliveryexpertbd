@@ -32,7 +32,7 @@ import WeightOptions from '../components/optionsdata/WeightOptions';
 const CreateOrder = () => {
   const [orderCost, setorderCost] = useState({});
   const [getCost, setGetCost] = useState({
-    delivery_fee : 0,
+    delivery_fee      : 0,
     additional_charge : 0
   });
   
@@ -64,6 +64,7 @@ const CreateOrder = () => {
     state: { adminInfo },
   } = useContext(AdminContext);
 
+
   const { register, handleSubmit, onSubmit, errors, imageUrl, setImageUrl } = useOrderSubmit(adminInfo._id);
 
   return (
@@ -76,7 +77,7 @@ const CreateOrder = () => {
           <div className="mt-5 md:col-span-3 md:mt-0 bg-white dark:bg-gray-800">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="p-6 flex-grow scrollbar-hide w-full max-h-full">
-                <div className="md:grid md:grid-cols-1">
+                {/* <div className="md:grid md:grid-cols-1">
                     <LabelArea label="Merchant" />
                       <Select
                       className="border h-12 text-sm focus:outline-none block w-full bg-gray-100 dark:bg-white border-transparent focus:bg-white"
@@ -89,8 +90,8 @@ const CreateOrder = () => {
                       <StoreOptions />
                     </Select>
                     <Error errorName={errors.merchant_id} />
-                </div>
-                <span className='block mb-5'></span>
+                </div> */}
+                {/* <span className='block mb-5'></span> */}
                 <div className="md:grid md:grid-cols-3 md:gap-6">
                   <div className="md:col-span-1">
                       <LabelArea label="Store" />
@@ -273,7 +274,7 @@ const CreateOrder = () => {
                           <div className="border border-black flex"></div>
                           <div className="delivery-cost-row total flex flex-1 font-bold text-gray-700 dark:text-gray-300">
                             <div className="flex-1">Total Cost</div>
-                            <div className="w-40 text-right">৳260</div>
+                            <div className="w-40 text-right">৳{getCost.total_cost}</div>
                           </div>
                       </div>
                   </div>
@@ -303,7 +304,6 @@ const CreateOrder = () => {
             </form>
           </div>
           {/* end form */}
-
 
         </div>
       </div>

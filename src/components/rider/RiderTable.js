@@ -7,18 +7,18 @@ import MerchantDrawer from '../drawer/MerchantDrawer';
 import useToggleDrawer from '../../hooks/useToggleDrawer';
 import EditDeleteButton from '../table/EditDeleteButton';
 
-const MerchantTable = ({ merchant }) => {
+const RiderTable = ({ rider }) => {
   const { serviceId, handleModalOpen, handleUpdate } = useToggleDrawer();
 
   return (
     <>
       <MainModal id={serviceId} />
       <MainDrawer>
-        <MerchantDrawer id={serviceId} />
+        <RiderDrawer id={serviceId} />
       </MainDrawer>
 
       <TableBody>
-        {merchant.map((item, i) => (
+        {rider.map((item, i) => (
           <TableRow key={i + 1}>
             <TableCell>
               <span className="font-semibold uppercase text-xs">
@@ -61,4 +61,4 @@ const MerchantTable = ({ merchant }) => {
   );
 };
 
-export default MerchantTable;
+export default RiderTable;
